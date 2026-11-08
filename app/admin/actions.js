@@ -150,3 +150,35 @@ export async function deleteEvent(formData) {
   revalidatePath('/events');
   revalidatePath('/admin/events');
 }
+export async function addPhoto(formData) {
+  const sb = supabaseServer();
+  const img = formData.get('image');
+  if (!img || img.size === 0) redirect('/admin/gallery?error=1');
+  if (img.size > 3.5 * 1024 * 1024) redirect('/admin/gallery?error=2');
+  const ext = (img.name.split('.').pop() || 'jpg').toLowerCase();
+  const path = `gallery/${Date.now()}.${ext}`;
+  const up = await sb.storage.from('media').upload(path, img, { contentType: img.type });
+  if (up.error) redirect('/admin/gallery?error=3');
+  const { error } = await sb.from('photos').insert({
+    image_url: sb.storage.from('media').getPublicUrl(path).data.publicUrl,
+    sport_id: formData.get('sport_id') ? Number(formData.get('sport_id')) : null,
+    caption: String(formData.get('caption') || '').trim() || null,
+  });
+  if (error) redirect('/admin/gallery?error=4');
+  revalidatePath('/');
+  revalidatePath('/gallery');
+  revalidatePath('/admin/gallery');
+  redirect('/admin/gallery');
+}
+
+export async function deletePhoto(formData) {
+  const sb = supabaseServer();
+  const id = String(formData.get('id'));
+  const { data: row } = await sb.from('photos').select('image_url').eq('id', id).maybeSingle();
+  await sb.from('photos').delete().eq('id', id);
+  const stored = row?.image_url?.split('/media/')[1];
+  if (stored) await sb.storage.from('media').remove([stored]);
+  revalidatePath('/');
+  revalidatePath('/gallery');
+  revalidatePath('/admin/gallery');
+}
