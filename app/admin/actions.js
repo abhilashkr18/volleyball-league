@@ -115,3 +115,38 @@ async function sportRows(sb, formData, playerId) {
     return { player_id: playerId, sport_id: s.id, position: formData.get(`pos_${s.slug}`) || null, preferred_jersey: j ? Number(j) : null };
   });
 }
+export async function addEvent(formData) {
+  const sb = supabaseServer();
+  const title = String(formData.get('title') || '').trim();
+  const when = String(formData.get('starts_at') || '');
+  if (!title || !when) redirect('/admin/events?error=1');
+  const row = {
+    title,
+    sport_id: formData.get('sport_id') ? Number(formData.get('sport_id')) : null,
+    description: String(formData.get('description') || '').trim() || null,
+    venue: String(formData.get('venue') || '').trim() || null,
+    starts_at: new Date(`${when}:00+05:30`).toISOString(),
+  };
+  const img = formData.get('image');
+  if (img && img.size > 0) {
+    if (img.size > 3 * 1024 * 1024) redirect('/admin/events?error=2');
+    const ext = (img.name.split('.').pop() || 'jpg').toLowerCase();
+    const path = `events/${Date.now()}.${ext}`;
+    const up = await sb.storage.from('media').upload(path, img, { contentType: img.type });
+    if (up.error) redirect('/admin/events?error=3');
+    row.image_url = sb.storage.from('media').getPublicUrl(path).data.publicUrl;
+  }
+  const { error } = await sb.from('events').insert(row);
+  if (error) redirect('/admin/events?error=4');
+  revalidatePath('/');
+  revalidatePath('/events');
+  revalidatePath('/admin/events');
+  redirect('/admin/events');
+}
+
+export async function deleteEvent(formData) {
+  await supabaseServer().from('events').delete().eq('id', String(formData.get('id')));
+  revalidatePath('/');
+  revalidatePath('/events');
+  revalidatePath('/admin/events');
+}
