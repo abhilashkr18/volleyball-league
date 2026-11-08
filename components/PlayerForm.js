@@ -22,7 +22,7 @@ export default function PlayerForm() {
       <label htmlFor="full_name">Full name</label><input id="full_name" name="full_name" required />
       <div className="row">
         <div><label htmlFor="dob">Date of birth</label><input id="dob" name="dob" type="date" required /></div>
-        <div><label htmlFor="phone">Phone (10 digits)</label><input id="phone" name="phone" inputMode="numeric" required /></div>
+                <div><label htmlFor="phone">Phone (optional)</label><input id="phone" name="phone" inputMode="numeric" /></div>
       </div>
       <label htmlFor="village">Village / area</label><input id="village" name="village" />
       <h3 style={{ marginTop: '1.2rem' }}>Volleyball profile</h3>
