@@ -16,13 +16,13 @@ export default function RootLayout({ children }) {
           <div className="wrap">
             <Link href="/" aria-label="Ground Zero Muri home"><img className="logo-img" src="/logo.jpg" alt="Ground Zero Muri" /></Link>
             <nav className="menu" aria-label="Main">
-              <Link href="/" className="on">Home</Link>
+                           <Link href="/">Home</Link>
               <Link href="/#about">About</Link>
               <Link href="/#sports">Sports</Link>
-              <Link href="/#gallery">Gallery</Link>
-              <Link href="/#videos">Videos</Link>
-              <Link href="/#events">Events</Link>
-              <Link href="/players">Players</Link>
+              <Link href="/gallery">Gallery</Link>
+              <Link href="/videos">Videos</Link>
+              <Link href="/events">Events</Link>
+              <Link href="/players">Players</Link> 
             </nav>
             <Link className="btn join" href="/players">Join Us</Link>
           </div>
