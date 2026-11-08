@@ -1,9 +1,11 @@
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { supabaseServer } from '@/lib/supabase/server';
 
 export const dynamic = 'force-dynamic';
 
 export default async function Profile({ params }) {
+    const { data: isAdmin } = await supabaseServer().rpc('is_admin');
   const { data: p } = await supabaseServer().from('players')
     .select('player_code,full_name,photo_url,height_cm,dominant_hand,village,player_sports(position,preferred_jersey,sports(name))')
     .eq('player_code', params.code.toUpperCase()).maybeSingle();
@@ -14,6 +16,7 @@ export default async function Profile({ params }) {
         {p.photo_url ? <img className="av" src={p.photo_url} alt={p.full_name} /> : <span className="av">{p.full_name[0]}</span>}
         <div><h1>{p.full_name}</h1><div className="code">{p.player_code}</div></div>
       </div>
+        {isAdmin && <p style={{ marginTop: '1rem' }}><Link className="btn" href={`/admin/players/${p.player_code}/edit`}>Edit player</Link></p>}
       <div className="panel" style={{ marginTop: '1.25rem' }}>
         <h2>Details</h2>
         <dl>
