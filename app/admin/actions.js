@@ -72,3 +72,40 @@ export async function createPlayer(_prev, formData) {
   }
   redirect(`/players/${p.player_code}`);
 }
+export async function updatePlayer(_prev, formData) {
+  const sb = supabaseServer();
+  const id = String(formData.get('id'));
+  const code = String(formData.get('code'));
+  const full_name = String(formData.get('full_name') || '').trim();
+  const phone = String(formData.get('phone') || '').replace(/\D/g, '');
+  const dob = String(formData.get('dob') || '');
+  const photo = formData.get('photo');
+  if (!full_name || !dob) return { error: 'Enter the full name and date of birth.' };
+  if (phone && phone.length < 10) return { error: 'Phone must be 10 digits, or leave it empty.' };
+  if (photo && photo.size > 2 * 1024 * 1024) return { error: 'Photo must be 2 MB or smaller.' };
+
+  const changes = {
+    full_name,
+    height_cm: formData.get('height') ? Number(formData.get('height')) : null,
+    dominant_hand: formData.get('hand') || null,
+    village: String(formData.get('village') || '').trim() || null,
+  };
+  if (photo && photo.size > 0) {
+    const ext = (photo.name.split('.').pop() || 'jpg').toLowerCase();
+    const path = `${id}-${Date.now()}.${ext}`;
+    const up = await sb.storage.from('player-photos').upload(path, photo, { contentType: photo.type });
+    if (up.error) return { error: 'Photo upload failed. Try a smaller image.' };
+    changes.photo_url = sb.storage.from('player-photos').getPublicUrl(path).data.publicUrl;
+  }
+
+  const { data: vb } = await sb.from('sports').select('id').eq('slug', 'volleyball').single();
+  const jersey = formData.get('jersey') ? Number(formData.get('jersey')) : null;
+  const r0 = await sb.from('players').update(changes).eq('id', id);
+  const r1 = await sb.from('player_private').update({ date_of_birth: dob, phone: phone || null }).eq('player_id', id);
+  const r2 = await sb.from('player_sports').upsert({ player_id: id, sport_id: vb.id, position: formData.get('position') || null, preferred_jersey: jersey });
+  if (r0.error || r1.error || r2.error) return { error: 'Could not save the changes. Please try again.' };
+
+  revalidatePath('/players');
+  revalidatePath(`/players/${code}`);
+  redirect(`/players/${code}`);
+}
