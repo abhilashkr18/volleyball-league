@@ -17,8 +17,8 @@ export default function RootLayout({ children }) {
             <Link href="/" aria-label="Ground Zero Muri home"><img className="logo-img" src="/logo.jpg" alt="Ground Zero Muri" /></Link>
             <nav className="menu" aria-label="Main">
                            <Link href="/">Home</Link>
-              <Link href="/#about">About</Link>
-              <Link href="/#sports">Sports</Link>
+              <Link href="/about">About</Link>
+              <Link href="/sports">Sports</Link>
               <Link href="/gallery">Gallery</Link>
               <Link href="/videos">Videos</Link>
               <Link href="/events">Events</Link>
@@ -37,11 +37,11 @@ export default function RootLayout({ children }) {
               </div>
               <div>
                 <h4>Quick Links</h4>
-                <Link href="/">Home</Link><Link href="/#about">About</Link><Link href="/#sports">Sports</Link><Link href="/#gallery">Gallery</Link>
+                                <Link href="/">Home</Link><Link href="/about">About</Link><Link href="/sports">Sports</Link><Link href="/gallery">Gallery</Link>
               </div>
               <div>
                 <h4>More Links</h4>
-                <Link href="/#videos">Videos</Link><Link href="/#events">Events</Link><Link href="/players">Players</Link><Link href="/admin">Admin</Link>
+                                <Link href="/videos">Videos</Link><Link href="/events">Events</Link><Link href="/players">Players</Link><Link href="/admin">Admin</Link>
               </div>
               <div>
                 <h4>Follow Us</h4>
