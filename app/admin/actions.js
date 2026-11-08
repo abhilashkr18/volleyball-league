@@ -182,3 +182,26 @@ export async function deletePhoto(formData) {
   revalidatePath('/gallery');
   revalidatePath('/admin/gallery');
 }
+export async function addVideo(formData) {
+  const sb = supabaseServer();
+  const title = String(formData.get('title') || '').trim();
+  const url = String(formData.get('video_url') || '').trim();
+  if (!title || !/^https?:\/\//i.test(url)) redirect('/admin/videos?error=1');
+  const { error } = await sb.from('videos').insert({
+    title,
+    video_url: url,
+    sport_id: formData.get('sport_id') ? Number(formData.get('sport_id')) : null,
+  });
+  if (error) redirect('/admin/videos?error=2');
+  revalidatePath('/');
+  revalidatePath('/videos');
+  revalidatePath('/admin/videos');
+  redirect('/admin/videos');
+}
+
+export async function deleteVideo(formData) {
+  await supabaseServer().from('videos').delete().eq('id', String(formData.get('id')));
+  revalidatePath('/');
+  revalidatePath('/videos');
+  revalidatePath('/admin/videos');
+}
