@@ -205,3 +205,26 @@ export async function deleteVideo(formData) {
   revalidatePath('/videos');
   revalidatePath('/admin/videos');
 }
+export async function saveAbout(formData) {
+  const value = String(formData.get('about') || '').trim();
+  if (!value) redirect('/admin/home?error=1');
+  const { error } = await supabaseServer().from('site_settings').upsert({ key: 'about_text', value });
+  if (error) redirect('/admin/home?error=2');
+  revalidatePath('/');
+  redirect('/admin/home?saved=1');
+}
+
+export async function addNews(formData) {
+  const title = String(formData.get('title') || '').trim();
+  if (!title) redirect('/admin/home?error=3');
+  const { error } = await supabaseServer().from('news').insert({ title });
+  if (error) redirect('/admin/home?error=2');
+  revalidatePath('/');
+  redirect('/admin/home');
+}
+
+export async function deleteNews(formData) {
+  await supabaseServer().from('news').delete().eq('id', String(formData.get('id')));
+  revalidatePath('/');
+  revalidatePath('/admin/home');
+}
