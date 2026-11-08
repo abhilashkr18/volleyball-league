@@ -5,12 +5,20 @@ import EditPlayerForm from '@/components/EditPlayerForm';
 export const dynamic = 'force-dynamic';
 
 export default async function EditPlayer({ params }) {
-  const { data } = await supabaseServer().from('players')
-    .select('id,player_code,full_name,height_cm,dominant_hand,village,player_private(date_of_birth,phone),player_sports(position,preferred_jersey)')
+  const sb = supabaseServer();
+  const { data } = await sb.from('players')
+    .select('id,player_code,full_name,height_cm,dominant_hand,village,player_private(date_of_birth,phone),player_sports(position,preferred_jersey,sports(slug))')
     .eq('player_code', params.code.toUpperCase()).maybeSingle();
   if (!data) notFound();
+  const { data: sp } = await sb.from('sports').select('id,slug,name,sport_positions(name,sort_order)').eq('is_active', true).order('id');
+  const sports = (sp || []).map((s) => ({
+    slug: s.slug,
+    name: s.name,
+    positions: [...(s.sport_positions || [])].sort((a, b) => a.sort_order - b.sort_order).map((x) => x.name),
+  }));
   const priv = (Array.isArray(data.player_private) ? data.player_private[0] : data.player_private) || {};
-  const sport = data.player_sports?.[0] || {};
+  const selected = {};
+  (data.player_sports || []).forEach((x) => { if (x.sports?.slug) selected[x.sports.slug] = { position: x.position ?? '', jersey: x.preferred_jersey ?? '' }; });
   const p = {
     id: data.id,
     player_code: data.player_code,
@@ -18,15 +26,14 @@ export default async function EditPlayer({ params }) {
     village: data.village ?? '',
     dob: priv.date_of_birth ?? '',
     phone: priv.phone ?? '',
-    position: sport.position ?? '',
-    jersey: sport.preferred_jersey ?? '',
     height: data.height_cm ?? '',
     hand: data.dominant_hand ?? '',
+    selected,
   };
   return (
     <main className="wrap" style={{ maxWidth: 640 }}>
       <h1>Edit player</h1>
-      <EditPlayerForm p={p} />
+      <EditPlayerForm p={p} sports={sports} />
     </main>
   );
 }
