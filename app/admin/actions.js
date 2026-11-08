@@ -52,10 +52,9 @@ export async function createPlayer(_prev, formData) {
   }).select('id,player_code').single();
   if (error) return { error: 'Could not save the player. Check that you are signed in as admin.' };
 
-  const { data: vb } = await sb.from('sports').select('id').eq('slug', 'volleyball').single();
-  const jersey = formData.get('jersey') ? Number(formData.get('jersey')) : null;
-    const r1 = await sb.from('player_private').insert({ player_id: p.id, date_of_birth: dob, phone: phone || null });
-  const r2 = await sb.from('player_sports').insert({ player_id: p.id, sport_id: vb.id, position: formData.get('position') || null, preferred_jersey: jersey });
+    const rows = await sportRows(sb, formData, p.id);
+  const r1 = await sb.from('player_private').insert({ player_id: p.id, date_of_birth: dob, phone: phone || null });
+  const r2 = rows.length ? await sb.from('player_sports').insert(rows) : { error: null };
   if (r1.error || r2.error) {
     await sb.from('players').delete().eq('id', p.id);
     return { error: 'Could not save the player details. Nothing was created, please try again.' };
@@ -98,14 +97,21 @@ export async function updatePlayer(_prev, formData) {
     changes.photo_url = sb.storage.from('player-photos').getPublicUrl(path).data.publicUrl;
   }
 
-  const { data: vb } = await sb.from('sports').select('id').eq('slug', 'volleyball').single();
-  const jersey = formData.get('jersey') ? Number(formData.get('jersey')) : null;
+    const rows = await sportRows(sb, formData, id);
   const r0 = await sb.from('players').update(changes).eq('id', id);
   const r1 = await sb.from('player_private').update({ date_of_birth: dob, phone: phone || null }).eq('player_id', id);
-  const r2 = await sb.from('player_sports').upsert({ player_id: id, sport_id: vb.id, position: formData.get('position') || null, preferred_jersey: jersey });
+  await sb.from('player_sports').delete().eq('player_id', id);
+  const r2 = rows.length ? await sb.from('player_sports').insert(rows) : { error: null };
   if (r0.error || r1.error || r2.error) return { error: 'Could not save the changes. Please try again.' };
 
   revalidatePath('/players');
   revalidatePath(`/players/${code}`);
   redirect(`/players/${code}`);
+}
+async function sportRows(sb, formData, playerId) {
+  const { data: sports } = await sb.from('sports').select('id,slug').eq('is_active', true);
+  return (sports || []).filter((s) => formData.get(`play_${s.slug}`) === 'on').map((s) => {
+    const j = formData.get(`jersey_${s.slug}`);
+    return { player_id: playerId, sport_id: s.id, position: formData.get(`pos_${s.slug}`) || null, preferred_jersey: j ? Number(j) : null };
+  });
 }
