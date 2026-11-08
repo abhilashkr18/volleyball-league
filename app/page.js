@@ -18,8 +18,8 @@ export default async function Home() {
           <div className="tag">Where Sports Bring Us <span className="script">Together...</span></div>
           <p>A platform for sports, passion and community. Uniting players, fans and dreamers at Ground Zero Muri.</p>
           <div className="acts">
-            <Link className="btn" href="/#sports">Explore Sports</Link>
-            <Link className="btn btn-line" href="/#videos">Watch Highlights</Link>
+                        <Link className="btn" href="/sports">Explore Sports</Link>
+                        <Link className="btn btn-line" href="/videos">Watch Highlights</Link>
           </div>
         </div>
       </section>
@@ -29,12 +29,12 @@ export default async function Home() {
           <div className="lab">Upcoming<b>Event</b></div>
           <div className="nm"><b>{EVENT.name}</b><span className="muted">{EVENT.place}</span></div>
           <Countdown target={EVENT.date} />
-          <Link className="btn" href="/#events">Know More</Link>
+                    <Link className="btn" href="/events">Know More</Link>
         </div>
 
         <section id="sports">
           <div className="sec-title"><h2>Our <em>Sports</em></h2><p className="muted">Multiple Games. One Community.</p></div>
-          <div className="sports-scroll"><div className="sports-strip"><img src="/sports.jpg" alt="Cricket, Football, Volleyball, Badminton, Kabaddi and more" /></div></div>
+                    <div className="sports-scroll"><div className="sports-strip"><img src="/sports.jpg" alt="Cricket, Football, Volleyball, Badminton, Kabaddi and more" />{['cricket', 'football', 'volleyball', 'badminton', 'kabaddi', ''].map((s, i) => (<Link key={i} href={s ? `/sports/${s}` : '/sports'} aria-label={s || 'All sports'} style={{ left: `${i * 16.66}%` }} />))}</div></div>
         </section>
 
         <section id="competitions">
@@ -56,19 +56,19 @@ export default async function Home() {
 
         <div className="duo">
           <section id="gallery" className="box">
-            <div className="hd"><h3>Gallery</h3><Link className="btn" href="/#gallery">View All</Link></div>
+                        <div className="hd"><h3>Gallery</h3><Link className="btn" href="/gallery">View All</Link></div>
             <p className="muted">Moments that inspire</p>
             <img src="/gallery.jpg" alt="Ground Zero Muri photo gallery" style={{ width: '100%', borderRadius: 10 }} />
           </section>
           <section id="videos" className="box">
-            <div className="hd"><h3>Videos</h3><Link className="btn" href="/#videos">View All</Link></div>
+                           <div className="hd"><h3>Videos</h3><Link className="btn" href="/videos">View All</Link></div>  
             <p className="muted">Relive the action</p>
-            <img src="/video.jpg" alt="Sports Championship highlights video" style={{ width: '100%', borderRadius: 10 }} />
+                        <Link href="/videos"><img src="/video.jpg" alt="Sports Championship highlights video" style={{ width: '100%', borderRadius: 10 }} /></Link>
           </section>
         </div>
 
         <section id="events" className="box" style={{ marginTop: '1rem' }}>
-          <div className="hd"><h3>Events &amp; News</h3></div>
+                   <div className="hd"><h3>Events &amp; News</h3><Link className="btn" href="/events">View All</Link></div> 
           <p className="muted">Stay updated with our latest events</p>
           <div className="news">
             <img src="/event.jpg" alt={EVENT.name} />
