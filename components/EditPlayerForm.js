@@ -1,14 +1,14 @@
 'use client';
 import { useFormState, useFormStatus } from 'react-dom';
 import { updatePlayer } from '@/app/admin/actions';
-import { POSITIONS } from '@/lib/volleyball';
+import SportsPicker from '@/components/SportsPicker';
 
 function Submit() {
   const { pending } = useFormStatus();
   return <button type="submit" disabled={pending}>{pending ? 'Saving…' : 'Save changes'}</button>;
 }
 
-export default function EditPlayerForm({ p }) {
+export default function EditPlayerForm({ p, sports }) {
   const [state, action] = useFormState(updatePlayer, {});
   return (
     <form action={action} className="panel">
@@ -22,15 +22,12 @@ export default function EditPlayerForm({ p }) {
         <div><label htmlFor="phone">Phone (optional)</label><input id="phone" name="phone" inputMode="numeric" defaultValue={p.phone} /></div>
       </div>
       <label htmlFor="village">Village / area</label><input id="village" name="village" defaultValue={p.village} />
-      <h3 style={{ marginTop: '1.2rem' }}>Volleyball profile</h3>
       <div className="row">
-        <div><label htmlFor="position">Position</label>
-          <select id="position" name="position" defaultValue={p.position}><option value="">Not set</option>{POSITIONS.map((x) => <option key={x}>{x}</option>)}</select></div>
-        <div><label htmlFor="jersey">Preferred jersey (1–20)</label><input id="jersey" name="jersey" type="number" min="1" max="20" defaultValue={p.jersey} /></div>
         <div><label htmlFor="height">Height (cm)</label><input id="height" name="height" type="number" min="100" max="250" defaultValue={p.height} /></div>
         <div><label htmlFor="hand">Dominant hand</label>
           <select id="hand" name="hand" defaultValue={p.hand}><option value="">Not set</option><option>Right</option><option>Left</option><option>Both</option></select></div>
       </div>
+      <SportsPicker sports={sports} selected={p.selected} />
       <label htmlFor="photo">New profile photo (leave empty to keep current)</label><input id="photo" name="photo" type="file" accept="image/*" />
       <p><Submit /></p>
     </form>
