@@ -33,13 +33,14 @@ export async function createPlayer(_prev, formData) {
   const dob = String(formData.get('dob') || '');
   const force = formData.get('force') === 'on';
   const photo = formData.get('photo');
-  if (!full_name || !dob || phone.length < 10) return { error: 'Enter the full name, date of birth and a valid 10-digit phone number.' };
+    if (!full_name || !dob) return { error: 'Enter the full name and date of birth.' };
+  if (phone && phone.length < 10) return { error: 'Phone must be 10 digits, or leave it empty.' };
   if (photo && photo.size > 2 * 1024 * 1024) return { error: 'Photo must be 2 MB or smaller.' };
 
   // Duplicate check: same phone, or same name with same date of birth.
   if (!force) {
-    const { data: hits } = await sb.from('player_private').select('phone,date_of_birth,players(full_name,player_code)').or(`phone.eq.${phone},date_of_birth.eq.${dob}`);
-    const dup = (hits || []).find((h) => h.phone === phone || h.players?.full_name.toLowerCase() === full_name.toLowerCase());
+        const { data: hits } = await sb.from('player_private').select('phone,date_of_birth,players(full_name,player_code)').or(phone ? `phone.eq.${phone},date_of_birth.eq.${dob}` : `date_of_birth.eq.${dob}`);
+    const dup = (hits || []).find((h) => (phone && h.phone === phone) || h.players?.full_name.toLowerCase() === full_name.toLowerCase());
     if (dup) return { duplicate: `${dup.players.full_name} (${dup.players.player_code})` };
   }
 
@@ -53,7 +54,7 @@ export async function createPlayer(_prev, formData) {
 
   const { data: vb } = await sb.from('sports').select('id').eq('slug', 'volleyball').single();
   const jersey = formData.get('jersey') ? Number(formData.get('jersey')) : null;
-  const r1 = await sb.from('player_private').insert({ player_id: p.id, date_of_birth: dob, phone });
+    const r1 = await sb.from('player_private').insert({ player_id: p.id, date_of_birth: dob, phone: phone || null });
   const r2 = await sb.from('player_sports').insert({ player_id: p.id, sport_id: vb.id, position: formData.get('position') || null, preferred_jersey: jersey });
   if (r1.error || r2.error) {
     await sb.from('players').delete().eq('id', p.id);
