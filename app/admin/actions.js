@@ -228,3 +228,33 @@ export async function deleteNews(formData) {
   revalidatePath('/');
   revalidatePath('/admin/home');
 }
+export async function createCompetition(formData) {
+  const sb = supabaseServer();
+  const name = String(formData.get('name') || '').trim();
+  const category_id = Number(formData.get('category_id'));
+  const sport_id = Number(formData.get('sport_id'));
+  const start = String(formData.get('start_date') || '');
+  const end = String(formData.get('end_date') || '');
+  if (!name || !category_id || !sport_id) redirect('/admin/competitions?error=1');
+  if (start && end && end < start) redirect('/admin/competitions?error=2');
+  const { error } = await sb.from('competitions').insert({
+    name,
+    category_id,
+    sport_id,
+    format: String(formData.get('format') || 'knockout'),
+    venue: String(formData.get('venue') || '').trim() || null,
+    description: String(formData.get('description') || '').trim() || null,
+    start_date: start || null,
+    end_date: end || null,
+  });
+  if (error) redirect('/admin/competitions?error=3');
+  revalidatePath('/admin/competitions');
+  revalidatePath('/');
+  redirect('/admin/competitions?created=1');
+}
+
+export async function deleteCompetition(formData) {
+  await supabaseServer().from('competitions').delete().eq('id', String(formData.get('id')));
+  revalidatePath('/admin/competitions');
+  revalidatePath('/');
+      }
