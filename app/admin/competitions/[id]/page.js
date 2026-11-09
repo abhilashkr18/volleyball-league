@@ -39,6 +39,7 @@ export default async function ManageCompetition({ params, searchParams }) {
       <p><Link href="/admin/competitions">← Competitions</Link></p>
       <h1>{comp.name}</h1>
       <p className="muted">{comp.sports?.name} · {comp.categories?.name} · {comp.format.replace('_', ' ')} · {comp.status}</p>
+      <p><Link className="btn" href={`/admin/competitions/${comp.id}/matches`}>Manage matches</Link></p>
       {searchParams.error && <div className="err">{ERRORS[searchParams.error] || 'Something went wrong.'}</div>}
       {(searchParams.ok || searchParams.saved || searchParams.created) && <div className="warn">Saved.</div>}
         
