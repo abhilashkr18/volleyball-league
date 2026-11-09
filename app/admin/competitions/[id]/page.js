@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { supabaseServer } from '@/lib/supabase/server';
 import { addTeam, deleteTeam, registerPlayer, updateRegistration, removeRegistration, updateCompetition } from '../../actions';
 import PlayerPicker from '@/components/PlayerPicker';
+import TeamLogoForm from '@/components/TeamLogoForm';
 
 export const dynamic = 'force-dynamic';
 
@@ -17,13 +18,16 @@ const ERRORS = {
   8: 'Could not save. Please try again.',
     9: 'Competition name cannot be empty.',
   10: 'End date cannot be before the start date.',
+    11: 'Choose a logo first.',
+  12: 'Logo must be 3.5 MB or smaller.',
+  13: 'Logo upload failed. Try a smaller image.',
 };
 
 export default async function ManageCompetition({ params, searchParams }) {
   const sb = supabaseServer();
      const { data: comp } = await sb.from('competitions').select('id,sport_id,name,format,status,venue,description,start_date,end_date,sports(name),categories(name)').eq('id', params.id).maybeSingle();
   if (!comp) notFound();
-  const { data: teams } = await sb.from('teams').select('id,name').eq('competition_id', comp.id).order('created_at');
+    const { data: teams } = await sb.from('teams').select('id,name,team_code,logo_url').eq('competition_id', comp.id).order('created_at');
   const { data: regs } = await sb.from('competition_players').select('id,team_id,jersey_number,players(player_code,full_name)').eq('competition_id', comp.id).order('created_at');
   const teamOptions = (teams || []).map((t) => <option key={t.id} value={t.id}>{t.name}</option>);
   const count = (tid) => (regs || []).filter((r) => r.team_id === tid).length;
@@ -72,13 +76,19 @@ export default async function ManageCompetition({ params, searchParams }) {
           <button type="submit">Add team</button>
         </form>
         {(teams || []).length === 0 && <p className="muted">No teams yet.</p>}
-        {(teams || []).map((t) => (
-          <form action={deleteTeam} key={t.id} style={{ display: 'flex', gap: '.6rem', alignItems: 'center', marginTop: '.6rem' }}>
-            <input type="hidden" name="competition_id" value={comp.id} />
-            <input type="hidden" name="id" value={t.id} />
-            <span style={{ flex: 1 }}><b>{t.name}</b> <span className="muted">{count(t.id)} players</span></span>
-            <button className="btn-line">Delete</button>
-          </form>
+               {(teams || []).map((t) => (
+          <div key={t.id} style={{ borderTop: '1px solid var(--line)', marginTop: '.8rem', paddingTop: '.8rem' }}>
+            <div style={{ display: 'flex', gap: '.7rem', alignItems: 'center' }}>
+              {t.logo_url ? <img className="av" src={t.logo_url} alt="" style={{ borderRadius: 12 }} /> : <span className="av" style={{ borderRadius: 12 }}>{t.name[0]}</span>}
+              <span style={{ flex: 1 }}><b>{t.name}</b><br /><span className="code">{t.team_code}</span> <span className="muted">· {count(t.id)} players</span></span>
+              <form action={deleteTeam}>
+                <input type="hidden" name="competition_id" value={comp.id} />
+                <input type="hidden" name="id" value={t.id} />
+                <button className="btn-line">Delete</button>
+              </form>
+            </div>
+            <TeamLogoForm competitionId={comp.id} teamId={t.id} />
+          </div>
         ))}
       </section>
 
