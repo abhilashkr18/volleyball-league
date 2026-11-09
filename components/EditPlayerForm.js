@@ -2,6 +2,7 @@
 import { useFormState, useFormStatus } from 'react-dom';
 import { updatePlayer } from '@/app/admin/actions';
 import SportsPicker from '@/components/SportsPicker';
+import { shrinkPhotoInput } from '@/lib/shrinkPhoto';
 
 function Submit() {
   const { pending } = useFormStatus();
@@ -28,7 +29,7 @@ export default function EditPlayerForm({ p, sports }) {
           <select id="hand" name="hand" defaultValue={p.hand}><option value="">Not set</option><option>Right</option><option>Left</option><option>Both</option></select></div>
       </div>
       <SportsPicker sports={sports} selected={p.selected} />
-      <label htmlFor="photo">New profile photo (leave empty to keep current)</label><input id="photo" name="photo" type="file" accept="image/*" />
+            <label htmlFor="photo">New profile photo (leave empty to keep current)</label><input id="photo" name="photo" type="file" accept="image/*" onChange={(e) => shrinkPhotoInput(e.target.form)} />
       <p><Submit /></p>
     </form>
   );
