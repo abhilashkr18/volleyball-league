@@ -45,7 +45,7 @@ export default async function AdminCompetitions({ searchParams }) {
       {(list || []).length === 0 && <p className="muted">No competitions yet.</p>}
       {(list || []).map((c) => (
         <form action={deleteCompetition} className="panel" key={c.id} style={{ display: 'flex', gap: '.8rem', alignItems: 'center' }}>
-          <span style={{ flex: 1 }}><b>{c.name}</b><br /><span className="muted">{c.sports?.name} · {c.categories?.name} · {c.format.replace('_', ' ')} · {c.status}{c.start_date ? ` · ${c.start_date}` : ''}</span></span>
+                <span style={{ flex: 1 }}><Link href={`/admin/competitions/${c.id}`}><b>{c.name}</b></Link><br /><span className="muted">{c.sports?.name} · {c.categories?.name} · {c.format.replace('_', ' ')} · {c.status}{c.start_date ? ` · ${c.start_date}` : ''}</span></span>
           <input type="hidden" name="id" value={c.id} />
           <button className="btn-line">Delete</button>
         </form>
