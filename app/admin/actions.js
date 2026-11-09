@@ -362,3 +362,18 @@ export async function setTeamLogo(formData) {
   revalidatePath(`/competitions/${cid}`);
   redirect(`/admin/competitions/${cid}?saved=1`);
     }
+export async function setCaptain(formData) {
+  const sb = supabaseServer();
+  const cid = String(formData.get('competition_id'));
+  const teamId = String(formData.get('team_id'));
+  const playerId = String(formData.get('captain') || '');
+  if (playerId) {
+    const { data: ok } = await sb.from('competition_players').select('id').eq('team_id', teamId).eq('player_id', playerId).maybeSingle();
+    if (!ok) redirect(`/admin/competitions/${cid}?error=14`);
+  }
+  const { error } = await sb.from('teams').update({ captain_player_id: playerId || null }).eq('id', teamId);
+  if (error) redirect(`/admin/competitions/${cid}?error=8`);
+  revalidatePath(`/admin/competitions/${cid}`);
+  revalidatePath(`/competitions/${cid}`);
+  redirect(`/admin/competitions/${cid}?saved=1`);
+}
