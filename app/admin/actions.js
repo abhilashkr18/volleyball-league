@@ -345,3 +345,20 @@ export async function updateCompetition(formData) {
   if (error) redirect(`/admin/competitions/${id}?error=8`);
   redirect(`/admin/competitions/${id}?saved=1`);
 }
+export async function setTeamLogo(formData) {
+  const sb = supabaseServer();
+  const cid = String(formData.get('competition_id'));
+  const id = String(formData.get('id'));
+  const img = formData.get('photo');
+  if (!img || img.size === 0) redirect(`/admin/competitions/${cid}?error=11`);
+  if (img.size > 3.5 * 1024 * 1024) redirect(`/admin/competitions/${cid}?error=12`);
+  const ext = (img.name.split('.').pop() || 'jpg').toLowerCase();
+  const path = `teams/${id}-${Date.now()}.${ext}`;
+  const up = await sb.storage.from('media').upload(path, img, { contentType: img.type });
+  if (up.error) redirect(`/admin/competitions/${cid}?error=13`);
+  const { error } = await sb.from('teams').update({ logo_url: sb.storage.from('media').getPublicUrl(path).data.publicUrl }).eq('id', id);
+  if (error) redirect(`/admin/competitions/${cid}?error=13`);
+  revalidatePath(`/admin/competitions/${cid}`);
+  revalidatePath(`/competitions/${cid}`);
+  redirect(`/admin/competitions/${cid}?saved=1`);
+    }
