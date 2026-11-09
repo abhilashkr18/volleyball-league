@@ -2,13 +2,14 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { supabaseServer } from '@/lib/supabase/server';
 import { addTeam, deleteTeam, registerPlayer, updateRegistration, removeRegistration } from '../../actions';
+import PlayerPicker from '@/components/PlayerPicker';
 
 export const dynamic = 'force-dynamic';
 
 const ERRORS = {
   1: 'Enter the team name.',
   2: 'Could not add the team. The name may already exist in this competition.',
-  3: 'Enter the Player ID.',
+  3: 'Search and choose a player first.',
   4: 'No active player found with that Player ID.',
   5: 'This player has not selected this sport in their profile. Edit the player first.',
   6: 'This player is already registered in this competition.',
@@ -18,7 +19,7 @@ const ERRORS = {
 
 export default async function ManageCompetition({ params, searchParams }) {
   const sb = supabaseServer();
-  const { data: comp } = await sb.from('competitions').select('id,name,format,status,sports(name),categories(name)').eq('id', params.id).maybeSingle();
+   const { data: comp } = await sb.from('competitions').select('id,sport_id,name,format,status,sports(name),categories(name)').eq('id', params.id).maybeSingle(); 
   if (!comp) notFound();
   const { data: teams } = await sb.from('teams').select('id,name').eq('competition_id', comp.id).order('created_at');
   const { data: regs } = await sb.from('competition_players').select('id,team_id,jersey_number,players(player_code,full_name)').eq('competition_id', comp.id).order('created_at');
@@ -55,7 +56,8 @@ export default async function ManageCompetition({ params, searchParams }) {
       <form action={registerPlayer} className="panel">
         <h3>Register a player</h3>
         <input type="hidden" name="competition_id" value={comp.id} />
-        <label htmlFor="code">Player ID</label><input id="code" name="code" placeholder="GZM-000001" autoCapitalize="characters" required />
+               <label>Player</label>
+        <PlayerPicker sportId={comp.sport_id} registered={(regs || []).map((r) => r.players?.player_code)} /> 
         <div className="row">
           <div><label htmlFor="team_id">Team</label>
             <select id="team_id" name="team_id" defaultValue=""><option value="">No team yet</option>{teamOptions}</select></div>
