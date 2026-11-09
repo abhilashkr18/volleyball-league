@@ -237,7 +237,7 @@ export async function createCompetition(formData) {
   const end = String(formData.get('end_date') || '');
   if (!name || !category_id || !sport_id) redirect('/admin/competitions?error=1');
   if (start && end && end < start) redirect('/admin/competitions?error=2');
-  const { error } = await sb.from('competitions').insert({
+    const { data: made, error } = await sb.from('competitions').insert({
     name,
     category_id,
     sport_id,
@@ -245,12 +245,12 @@ export async function createCompetition(formData) {
     venue: String(formData.get('venue') || '').trim() || null,
     description: String(formData.get('description') || '').trim() || null,
     start_date: start || null,
-    end_date: end || null,
-  });
-  if (error) redirect('/admin/competitions?error=3');
+       end_date: end || null,
+  }).select('id').single();
+  if (error) redirect('/admin/competitions?error=3'); 
   revalidatePath('/admin/competitions');
   revalidatePath('/');
-  redirect('/admin/competitions?created=1');
+    redirect(`/admin/competitions/${made.id}?created=1`);
 }
 
 export async function deleteCompetition(formData) {
@@ -320,4 +320,28 @@ export async function removeRegistration(formData) {
   await supabaseServer().from('competition_players').delete().eq('id', String(formData.get('id')));
   revalidatePath(`/admin/competitions/${cid}`);
   redirect(`/admin/competitions/${cid}`);
+}
+export async function updateCompetition(formData) {
+  const sb = supabaseServer();
+  const id = String(formData.get('id'));
+  const name = String(formData.get('name') || '').trim();
+  const start = String(formData.get('start_date') || '');
+  const end = String(formData.get('end_date') || '');
+  if (!name) redirect(`/admin/competitions/${id}?error=9`);
+  if (start && end && end < start) redirect(`/admin/competitions/${id}?error=10`);
+  const { error } = await sb.from('competitions').update({
+    name,
+    format: String(formData.get('format') || 'knockout'),
+    status: String(formData.get('status') || 'upcoming'),
+    venue: String(formData.get('venue') || '').trim() || null,
+    description: String(formData.get('description') || '').trim() || null,
+    start_date: start || null,
+    end_date: end || null,
+  }).eq('id', id);
+  revalidatePath('/');
+  revalidatePath('/competitions');
+  revalidatePath(`/competitions/${id}`);
+  revalidatePath(`/admin/competitions/${id}`);
+  if (error) redirect(`/admin/competitions/${id}?error=8`);
+  redirect(`/admin/competitions/${id}?saved=1`);
 }
