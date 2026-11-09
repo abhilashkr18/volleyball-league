@@ -47,7 +47,7 @@ export default async function CompetitionPage({ params }) {
         {(matches || []).map((m) => (
           <div className="box" key={m.id}>
             <p className="muted" style={{ margin: 0 }}>{m.round_label ? `${m.round_label} · ` : ''}Best of {m.best_of} · {m.status}</p>
-            <h3 style={{ margin: '.3rem 0' }}>{m.team_a?.name} <em>vs</em> {m.team_b?.name}</h3>
+                        <h3 style={{ margin: '.3rem 0' }}><Link href={`/matches/${m.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>{m.team_a?.name} <em>vs</em> {m.team_b?.name}</Link></h3>
             <p className="muted" style={{ margin: 0 }}>{when2(m.scheduled_at)}{m.venue ? ` · ${m.venue}` : ''}</p>
           </div>
         ))}
