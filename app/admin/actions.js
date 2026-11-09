@@ -258,3 +258,66 @@ export async function deleteCompetition(formData) {
   revalidatePath('/admin/competitions');
   revalidatePath('/');
       }
+
+export async function addTeam(formData) {
+  const sb = supabaseServer();
+  const cid = String(formData.get('competition_id'));
+  const name = String(formData.get('name') || '').trim();
+  if (!name) redirect(`/admin/competitions/${cid}?error=1`);
+  const { error } = await sb.from('teams').insert({ competition_id: cid, name });
+  if (error) redirect(`/admin/competitions/${cid}?error=2`);
+  revalidatePath(`/admin/competitions/${cid}`);
+  redirect(`/admin/competitions/${cid}`);
+}
+
+export async function deleteTeam(formData) {
+  const cid = String(formData.get('competition_id'));
+  await supabaseServer().from('teams').delete().eq('id', String(formData.get('id')));
+  revalidatePath(`/admin/competitions/${cid}`);
+  redirect(`/admin/competitions/${cid}`);
+}
+
+export async function registerPlayer(formData) {
+  const sb = supabaseServer();
+  const cid = String(formData.get('competition_id'));
+  const back = (q) => redirect(`/admin/competitions/${cid}?${q}`);
+  const code = String(formData.get('code') || '').trim().toUpperCase();
+  if (!code) back('error=3');
+  const { data: comp } = await sb.from('competitions').select('sport_id').eq('id', cid).maybeSingle();
+  const { data: p } = await sb.from('players').select('id,status').eq('player_code', code).maybeSingle();
+  if (!comp || !p || p.status !== 'active') back('error=4');
+  const { data: ps } = await sb.from('player_sports').select('player_id').eq('player_id', p.id).eq('sport_id', comp.sport_id).maybeSingle();
+  if (!ps) back('error=5');
+  const team = String(formData.get('team_id') || '');
+  const j = String(formData.get('jersey') || '');
+  const { error } = await sb.from('competition_players').insert({
+    competition_id: cid,
+    player_id: p.id,
+    team_id: team || null,
+    jersey_number: j === '' ? null : Number(j),
+  });
+  if (error) back(error.message.includes('team_jersey') ? 'error=7' : error.code === '23505' ? 'error=6' : 'error=8');
+  revalidatePath(`/admin/competitions/${cid}`);
+  back('ok=1');
+}
+
+export async function updateRegistration(formData) {
+  const sb = supabaseServer();
+  const cid = String(formData.get('competition_id'));
+  const team = String(formData.get('team_id') || '');
+  const j = String(formData.get('jersey') || '');
+  const { error } = await sb.from('competition_players').update({
+    team_id: team || null,
+    jersey_number: j === '' ? null : Number(j),
+  }).eq('id', String(formData.get('id')));
+  revalidatePath(`/admin/competitions/${cid}`);
+  if (error) redirect(`/admin/competitions/${cid}?error=${error.message.includes('team_jersey') ? 7 : 8}`);
+  redirect(`/admin/competitions/${cid}?saved=1`);
+}
+
+export async function removeRegistration(formData) {
+  const cid = String(formData.get('competition_id'));
+  await supabaseServer().from('competition_players').delete().eq('id', String(formData.get('id')));
+  revalidatePath(`/admin/competitions/${cid}`);
+  redirect(`/admin/competitions/${cid}`);
+}
