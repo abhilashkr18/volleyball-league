@@ -33,13 +33,14 @@ function VideoPreview({ v }) {
 
 export default async function Home() {
   const sb = supabaseServer();
-  const [cats, ev, aboutRow, news, photos, vids] = await Promise.all([
+    const [cats, ev, aboutRow, news, photos, vids, comps] = await Promise.all([
     sb.from('categories').select('id,name').eq('is_active', true).order('sort_order'),
     sb.from('events').select('id,title,venue,starts_at,image_url').gte('starts_at', new Date().toISOString()).order('starts_at').limit(1),
     sb.from('site_settings').select('value').eq('key', 'about_text').maybeSingle(),
     sb.from('news').select('id,title').order('created_at', { ascending: false }).limit(6),
     sb.from('photos').select('id,image_url,caption').order('created_at', { ascending: false }).limit(8),
     sb.from('videos').select('id,title,video_url').order('created_at', { ascending: false }).limit(1),
+         sb.from('competitions').select('id,name,category_id').order('created_at', { ascending: false }), 
   ]);
   const event = ev.data?.[0];
   const newsList = news.data?.length ? news.data.map((n) => n.title) : SAMPLE_NEWS;
@@ -78,7 +79,7 @@ export default async function Home() {
         <section id="competitions">
           <div className="sec-title"><h2>Our <em>Competitions</em></h2></div>
           <div className="grid">
-            {(cats.data || []).map((c) => (<div className="cat" key={c.id}><h3>{c.name}</h3><p className="muted">No competitions yet.</p></div>))}
+                      {(cats.data || []).map((c) => { const mine = (comps.data || []).filter((x) => x.category_id === c.id); return (<div className="cat" key={c.id}><h3><Link href={`/competitions?category=${c.id}`}>{c.name}</Link></h3>{mine.length === 0 ? <p className="muted">No competitions yet.</p> : mine.slice(0, 3).map((x) => <p key={x.id} style={{ margin: '.25rem 0' }}><Link href={`/competitions/${x.id}`}>{x.name}</Link></p>)}</div>); })}
           </div>
         </section>
 
