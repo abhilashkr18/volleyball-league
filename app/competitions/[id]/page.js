@@ -23,7 +23,7 @@ export default async function CompetitionPage({ params }) {
   const sb = supabaseServer();
   const { data: c } = await sb.from('competitions').select('id,name,format,status,venue,description,start_date,end_date,sports(name,slug),categories(name)').eq('id', params.id).maybeSingle();
   if (!c) notFound();
-  const { data: teams } = await sb.from('teams').select('id,name').eq('competition_id', c.id).order('created_at');
+   const { data: teams } = await sb.from('teams').select('id,name,team_code,logo_url').eq('competition_id', c.id).order('created_at'); 
   const { data: regs } = await sb.from('competition_players').select('team_id,jersey_number,players(player_code,full_name,photo_url)').eq('competition_id', c.id).order('jersey_number', { ascending: true, nullsFirst: false });
   const rows = (regs || []).filter((r) => r.players);
   const solo = rows.filter((r) => !r.team_id);
@@ -44,7 +44,7 @@ export default async function CompetitionPage({ params }) {
           const mine = rows.filter((r) => r.team_id === t.id);
           return (
             <section className="box" key={t.id}>
-              <div className="hd"><h3>{t.name}</h3><span className="muted">{mine.length} players</span></div>
+                            <div className="hd"><Link href={`/teams/${t.team_code}`} style={{ display: 'flex', alignItems: 'center', gap: '.6rem', textDecoration: 'none', color: 'inherit' }}>{t.logo_url ? <img className="av" src={t.logo_url} alt="" style={{ borderRadius: 12 }} /> : <span className="av" style={{ borderRadius: 12 }}>{t.name[0]}</span>}<div><h3 style={{ margin: 0 }}>{t.name}</h3><span className="code">{t.team_code}</span></div></Link><span className="muted">{mine.length} players</span></div>
               {mine.length === 0 && <p className="muted">No players yet.</p>}
               <ul className="plist">{mine.map((r) => <PlayerRow key={r.players.player_code} r={r} />)}</ul>
             </section>
