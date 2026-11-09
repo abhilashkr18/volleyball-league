@@ -377,3 +377,36 @@ export async function setCaptain(formData) {
   revalidatePath(`/competitions/${cid}`);
   redirect(`/admin/competitions/${cid}?saved=1`);
 }
+export async function createMatch(formData) {
+  const sb = supabaseServer();
+  const cid = String(formData.get('competition_id'));
+  const back = (q) => redirect(`/admin/competitions/${cid}/matches?${q}`);
+  const a = String(formData.get('team_a') || '');
+  const b = String(formData.get('team_b') || '');
+  if (!a || !b) back('error=1');
+  if (a === b) back('error=2');
+  const { data: ok } = await sb.from('teams').select('id').eq('competition_id', cid).in('id', [a, b]);
+  if ((ok || []).length !== 2) back('error=3');
+  const when = String(formData.get('scheduled_at') || '');
+  const { error } = await sb.from('matches').insert({
+    competition_id: cid,
+    team_a_id: a,
+    team_b_id: b,
+    round_label: String(formData.get('round_label') || '').trim() || null,
+    scheduled_at: when ? new Date(`${when}:00+05:30`).toISOString() : null,
+    venue: String(formData.get('venue') || '').trim() || null,
+    best_of: Number(formData.get('best_of')) || 3,
+  });
+  if (error) back('error=4');
+  revalidatePath(`/admin/competitions/${cid}/matches`);
+  revalidatePath(`/competitions/${cid}`);
+  back('ok=1');
+}
+
+export async function deleteMatch(formData) {
+  const cid = String(formData.get('competition_id'));
+  await supabaseServer().from('matches').delete().eq('id', String(formData.get('id')));
+  revalidatePath(`/admin/competitions/${cid}/matches`);
+  revalidatePath(`/competitions/${cid}`);
+  redirect(`/admin/competitions/${cid}/matches`);
+}
