@@ -1,6 +1,7 @@
 import './globals.css';
 import Link from 'next/link';
 import { Barlow, Anton, Kaushan_Script } from 'next/font/google';
+import JoinMenu from '@/components/JoinMenu';
 
 const body = Barlow({ subsets: ['latin'], weight: ['400', '600', '700'], variable: '--font-body' });
 const head = Anton({ subsets: ['latin'], weight: '400', variable: '--font-head' });
@@ -24,7 +25,7 @@ export default function RootLayout({ children }) {
               <Link href="/events">Events</Link>
               <Link href="/players">Players</Link> 
             </nav>
-            <Link className="btn join" href="/players">Join Us</Link>
+                        <JoinMenu />
           </div>
         </header>
         {children}
@@ -45,7 +46,7 @@ export default function RootLayout({ children }) {
               </div>
               <div>
                 <h4>Follow Us</h4>
-                <a href="#">YouTube</a><a href="#">Instagram</a><a href="#">X</a>
+                              <a href="https://youtube.com/@groundzero_muri" target="_blank" rel="noopener noreferrer">YouTube</a><a href="https://www.instagram.com/ground_zero_muri" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://maps.app.goo.gl/ZJa4pZNaUE3GKRFaA" target="_blank" rel="noopener noreferrer">Location</a>  
               </div>
             </div>
             <p className="copy muted">© 2026 Ground Zero Muri. All rights reserved. Muri, Jharkhand.</p>
