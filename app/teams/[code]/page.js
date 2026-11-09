@@ -51,6 +51,13 @@ export default async function TeamPage({ params, searchParams }) {
   const tab = TABS.some(([k]) => k === searchParams.tab) ? searchParams.tab : 'overview';
   const players = await squad(sb, t.id, c.sport_id);
   const captain = players.find((p) => p.id === t.captain_player_id);
+    let games = [];
+  if (tab === 'matches') {
+    const { data } = await sb.from('matches')
+      .select('id,round_label,scheduled_at,venue,best_of,status,team_a_id,team_b_id,team_a:teams!matches_team_a_id_fkey(name,team_code),team_b:teams!matches_team_b_id_fkey(name,team_code)')
+      .or(`team_a_id.eq.${t.id},team_b_id.eq.${t.id}`).order('scheduled_at', { ascending: true, nullsFirst: false });
+    games = data || [];
+}
 
   let others = [], other = null, otherPlayers = [];
   if (tab === 'compare') {
@@ -98,8 +105,22 @@ export default async function TeamPage({ params, searchParams }) {
 
       {tab === 'players' && (<section className="box"><h3>Squad ({players.length})</h3><PlayerList list={players} /></section>)}
 
-      {tab === 'matches' && (<section className="box"><h3>Matches</h3><p className="muted">Fixtures and results for {t.name} will appear here once the match schedule is published.</p></section>)}
-
+      
+      {tab === 'matches' && (
+        <section className="box">
+          <h3>Matches ({games.length})</h3>
+          {games.length === 0 && <p className="muted">No matches scheduled for {t.name} yet.</p>}
+          {games.map((m) => {
+            const opp = m.team_a_id === t.id ? m.team_b : m.team_a;
+            return (
+              <div key={m.id} style={{ borderTop: '1px solid var(--line)', padding: '.7rem 0' }}>
+                <b>{t.name} <em style={{ color: 'var(--or)', fontStyle: 'normal' }}>vs</em> {opp?.name}</b>
+                <p className="muted" style={{ margin: '.2rem 0 0' }}>{m.round_label ? `${m.round_label} · ` : ''}{m.scheduled_at ? new Date(m.scheduled_at).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', dateStyle: 'medium', timeStyle: 'short' }) : 'Time to be announced'} · Best of {m.best_of} · {m.status}</p>
+              </div>
+            );
+          })}
+        </section>
+      )}
       {tab === 'tournament' && (
         <section className="box">
           <h3>Tournament</h3>
