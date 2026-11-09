@@ -114,7 +114,7 @@ export default async function TeamPage({ params, searchParams }) {
             const opp = m.team_a_id === t.id ? m.team_b : m.team_a;
             return (
               <div key={m.id} style={{ borderTop: '1px solid var(--line)', padding: '.7rem 0' }}>
-                <b>{t.name} <em style={{ color: 'var(--or)', fontStyle: 'normal' }}>vs</em> {opp?.name}</b>
+                                <Link href={`/matches/${m.id}`} style={{ textDecoration: 'none', color: 'inherit' }}><b>{t.name} <em style={{ color: 'var(--or)', fontStyle: 'normal' }}>vs</em> {opp?.name}</b></Link>
                 <p className="muted" style={{ margin: '.2rem 0 0' }}>{m.round_label ? `${m.round_label} · ` : ''}{m.scheduled_at ? new Date(m.scheduled_at).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', dateStyle: 'medium', timeStyle: 'short' }) : 'Time to be announced'} · Best of {m.best_of} · {m.status}</p>
               </div>
             );
