@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { supabaseServer } from '@/lib/supabase/server';
-import { addTeam, deleteTeam, registerPlayer, updateRegistration, removeRegistration, updateCompetition } from '../../actions';
+import { addTeam, deleteTeam, registerPlayer, updateRegistration, removeRegistration, updateCompetition, setCaptain } from '../../actions';
 import PlayerPicker from '@/components/PlayerPicker';
 import TeamLogoForm from '@/components/TeamLogoForm';
 
@@ -21,14 +21,15 @@ const ERRORS = {
     11: 'Choose a logo first.',
   12: 'Logo must be 3.5 MB or smaller.',
   13: 'Logo upload failed. Try a smaller image.',
+    14: 'The captain must be a registered player of this team.',
 };
 
 export default async function ManageCompetition({ params, searchParams }) {
   const sb = supabaseServer();
      const { data: comp } = await sb.from('competitions').select('id,sport_id,name,format,status,venue,description,start_date,end_date,sports(name),categories(name)').eq('id', params.id).maybeSingle();
   if (!comp) notFound();
-    const { data: teams } = await sb.from('teams').select('id,name,team_code,logo_url').eq('competition_id', comp.id).order('created_at');
-  const { data: regs } = await sb.from('competition_players').select('id,team_id,jersey_number,players(player_code,full_name)').eq('competition_id', comp.id).order('created_at');
+      const { data: teams } = await sb.from('teams').select('id,name,team_code,logo_url,captain_player_id').eq('competition_id', comp.id).order('created_at');
+    const { data: regs } = await sb.from('competition_players').select('id,team_id,jersey_number,players(id,player_code,full_name)').eq('competition_id', comp.id).order('created_at');
   const teamOptions = (teams || []).map((t) => <option key={t.id} value={t.id}>{t.name}</option>);
   const count = (tid) => (regs || []).filter((r) => r.team_id === tid).length;
   const unassigned = (regs || []).filter((r) => !r.team_id).length;
@@ -88,6 +89,15 @@ export default async function ManageCompetition({ params, searchParams }) {
               </form>
             </div>
             <TeamLogoForm competitionId={comp.id} teamId={t.id} />
+                            <form action={setCaptain} style={{ display: 'flex', gap: '.5rem', alignItems: 'center', marginTop: '.5rem' }}>
+              <input type="hidden" name="competition_id" value={comp.id} />
+              <input type="hidden" name="team_id" value={t.id} />
+              <select name="captain" defaultValue={t.captain_player_id || ''} aria-label="Captain" style={{ flex: 1 }}>
+                <option value="">No captain</option>
+                {(regs || []).filter((r) => r.team_id === t.id).map((r) => <option key={r.id} value={r.players?.id}>{r.players?.full_name}{r.jersey_number !== null ? ` (#${r.jersey_number})` : ''}</option>)}
+              </select>
+              <button type="submit" className="btn-line" style={{ padding: '.4rem 1rem' }}>Set captain</button>
+            </form>
           </div>
         ))}
       </section>
