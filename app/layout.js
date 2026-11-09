@@ -23,6 +23,7 @@ export default function RootLayout({ children }) {
               <Link href="/gallery">Gallery</Link>
               <Link href="/videos">Videos</Link>
               <Link href="/events">Events</Link>
+                <Link href="/competitions">Competitions</Link>
               <Link href="/players">Players</Link> 
             </nav>
                         <JoinMenu />
