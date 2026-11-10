@@ -2,7 +2,7 @@
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { supabaseServer } from '@/lib/supabase/server';
-import { replaySet, setWinner, targetFor, setsToWin } from '@/lib/engine';
+import { replaySet, setWinner, targetFor, setsToWin, pendingBreak } from '@/lib/engine';
 
 export async function signOut() {
   await supabaseServer().auth.signOut();
@@ -621,3 +621,61 @@ export async function undoLast(input) {
   refreshMatch(m);
   return { ok: true, undone: 'point' };
     }
+export async function recordEvent(input) {
+  const sb = supabaseServer();
+  const ctx = await scoringState(sb, input.matchId, input.setNo);
+  if (!ctx || !playing(ctx)) return { error: 'This set is not in play.' };
+  const { m, state, roster, events } = ctx;
+  const kind = input.kind;
+  const row = {
+    match_id: m.id, set_number: ctx.set.set_number, after_seq: state.rallies, kind,
+    team_id: null, player_id: null, player_in_id: null, score_a: state.scoreA, score_b: state.scoreB, note: input.note || null,
+  };
+  if (kind === 'technical_timeout' || kind === 'side_change') {
+    const need = pendingBreak({ setNo: ctx.set.set_number, bestOf: m.best_of, a: state.scoreA, b: state.scoreB, events });
+    if (!need || need.kind !== kind) return { error: 'No break is due right now.' };
+    row.note = need.at ? String(need.at) : null;
+  } else {
+    const t = input.teamId;
+    if (![m.team_a_id, m.team_b_id].includes(t)) return { error: 'Choose the team.' };
+    row.team_id = t;
+    const court = state.court[t];
+    const inRoster = (id) => roster.some((x) => x.team_id === t && x.player_id === id);
+    const isLib = (id) => roster.some((x) => x.player_id === id && x.is_libero);
+    const out = input.playerId || null;
+    const inn = input.playerInId || null;
+    if (kind === 'substitution') {
+      if (state.subs[t] >= 6) return { error: 'This team has already used all 6 substitutions in this set.' };
+      if (!court.includes(out) || isLib(out)) return { error: 'Choose a player who is on the court.' };
+      if (!inRoster(inn) || court.includes(inn) || isLib(inn)) return { error: 'Choose a player from the bench.' };
+      row.player_id = out;
+      row.player_in_id = inn;
+    } else if (kind === 'libero_in') {
+      const i = court.indexOf(out);
+      if (i !== 4 && i !== 5) return { error: 'The libero can replace a back-row player only (positions V and VI).' };
+      if (isLib(out)) return { error: 'Choose a regular player to replace.' };
+      if (!inRoster(inn) || !isLib(inn) || court.includes(inn)) return { error: 'Choose a libero from the bench.' };
+      row.player_id = out;
+      row.player_in_id = inn;
+    } else if (kind === 'libero_out') {
+      const orig = state.libero[t][out];
+      if (!orig || !court.includes(out)) return { error: 'That libero is not on the court.' };
+      row.player_id = out;
+      row.player_in_id = orig;
+    } else if (kind === 'timeout') {
+      if (state.timeouts[t] >= 2) return { error: 'This team has already used both time-outs in this set.' };
+    } else if (kind === 'red_card') {
+      if (!inRoster(out)) return { error: 'Choose a player of this team.' };
+      row.player_id = out;
+    } else if (kind === 'delay_warning') {
+      const { data: prev } = await sb.from('match_events').select('id').eq('match_id', m.id).eq('team_id', t).eq('kind', 'delay_warning');
+      if ((prev || []).length) return { error: 'This team already has a delay warning. Give a delay penalty instead.' };
+    } else {
+      return { error: 'Unknown event.' };
+    }
+  }
+  const { error } = await sb.from('match_events').insert(row);
+  if (error) return { error: 'Could not save. Please try again.' };
+  refreshMatch(m);
+  return { ok: true };
+}
