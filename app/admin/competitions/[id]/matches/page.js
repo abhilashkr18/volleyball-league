@@ -58,6 +58,7 @@ export default async function AdminMatches({ params, searchParams }) {
           <input type="hidden" name="id" value={m.id} />
                     <span style={{ flex: 1 }}><b>{m.team_a?.name} vs {m.team_b?.name}</b><br /><span className="muted">{m.round_label ? `${m.round_label} · ` : ''}{fmt(m.scheduled_at)} · Best of {m.best_of} · {m.status}</span></span>
           <Link className="btn" href={`/admin/matches/${m.id}/setup`} style={{ padding: '.4rem 1rem' }}>Set up</Link>
+                  <Link className="btn" href={`/admin/matches/${m.id}/score`} style={{ padding: '.4rem 1rem' }}>Score</Link>
           <button className="btn-line">Delete</button>
         </form>
       ))}
