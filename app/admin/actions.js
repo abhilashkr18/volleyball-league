@@ -2,6 +2,7 @@
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { supabaseServer } from '@/lib/supabase/server';
+import { replaySet, setWinner, targetFor, setsToWin } from '@/lib/engine';
 
 export async function signOut() {
   await supabaseServer().auth.signOut();
@@ -452,3 +453,171 @@ export async function saveMatchSetup(formData) {
   revalidatePath(`/admin/matches/${mid}/setup`);
   back('ok=1');
 }
+// ---------- Live scoring ----------
+async function scoringState(sb, matchId, setNo) {
+  const { data: m } = await sb.from('matches').select('id,status,best_of,team_a_id,team_b_id,competition_id').eq('id', matchId).maybeSingle();
+  if (!m) return null;
+  const { data: sets } = await sb.from('match_sets').select('*').eq('match_id', matchId).order('set_number');
+  const set = (sets || []).find((s) => s.set_number === setNo) || null;
+  const { data: roster } = await sb.from('match_rosters').select('team_id,player_id,jersey_number,is_libero').eq('match_id', matchId);
+  let rallies = [];
+  let events = [];
+  let state = null;
+  if (set) {
+    const [l, r, e] = await Promise.all([
+      sb.from('set_lineups').select('team_id,slot,player_id').eq('match_id', matchId).eq('set_number', setNo).order('slot'),
+      sb.from('rallies').select('*').eq('match_id', matchId).eq('set_number', setNo).order('seq'),
+      sb.from('match_events').select('*').eq('match_id', matchId).eq('set_number', setNo).order('created_at'),
+    ]);
+    rallies = r.data || [];
+    events = e.data || [];
+    const lineA = (l.data || []).filter((x) => x.team_id === m.team_a_id).map((x) => x.player_id);
+    const lineB = (l.data || []).filter((x) => x.team_id === m.team_b_id).map((x) => x.player_id);
+    if (lineA.length === 6 && lineB.length === 6) {
+      state = replaySet({ teamA: m.team_a_id, teamB: m.team_b_id, lineupA: lineA, lineupB: lineB, firstServe: set.first_serve_team_id, rallies, events });
+    }
+  }
+  return { m, sets: sets || [], set, roster: roster || [], rallies, events, state };
+}
+
+function refreshMatch(m) {
+  revalidatePath(`/matches/${m.id}`);
+  revalidatePath(`/admin/matches/${m.id}/score`);
+  revalidatePath(`/competitions/${m.competition_id}`);
+}
+
+export async function startSet(input) {
+  const sb = supabaseServer();
+  const { data: m } = await sb.from('matches').select('id,status,best_of,team_a_id,team_b_id,competition_id').eq('id', input.matchId).maybeSingle();
+  if (!m) return { error: 'Match not found.' };
+  if (m.status === 'completed') return { error: 'This match is already finished.' };
+  const { data: sets } = await sb.from('match_sets').select('set_number,completed').eq('match_id', m.id);
+  if ((sets || []).some((s) => !s.completed)) return { error: 'Finish the current set first.' };
+  const setNo = (sets || []).length + 1;
+  if (setNo > m.best_of) return { error: 'All sets are already played.' };
+  const { data: ros } = await sb.from('match_rosters').select('team_id,player_id,is_libero').eq('match_id', m.id);
+  const okTeam = (tid, ids) => Array.isArray(ids) && ids.length === 6 && new Set(ids).size === 6 && ids.every((id) => (ros || []).some((r) => r.team_id === tid && r.player_id === id && !r.is_libero));
+  if (!okTeam(m.team_a_id, input.lineupA) || !okTeam(m.team_b_id, input.lineupB)) return { error: 'Each team needs 6 different starting players from its roster. The libero is not part of the starting six.' };
+  if (![m.team_a_id, m.team_b_id].includes(input.firstServe)) return { error: 'Choose which team serves first.' };
+  const { error: e1 } = await sb.from('match_sets').insert({ match_id: m.id, set_number: setNo, first_serve_team_id: input.firstServe });
+  if (e1) return { error: 'Could not start the set.' };
+  const rows = [
+    ...input.lineupA.map((p, i) => ({ match_id: m.id, set_number: setNo, team_id: m.team_a_id, slot: i + 1, player_id: p })),
+    ...input.lineupB.map((p, i) => ({ match_id: m.id, set_number: setNo, team_id: m.team_b_id, slot: i + 1, player_id: p })),
+  ];
+  const { error: e2 } = await sb.from('set_lineups').insert(rows);
+  if (e2) {
+    await sb.from('match_sets').delete().eq('match_id', m.id).eq('set_number', setNo);
+    return { error: 'Could not save the starting lineups.' };
+  }
+  if (m.status === 'scheduled') await sb.from('matches').update({ status: 'live', started_at: new Date().toISOString() }).eq('id', m.id);
+  refreshMatch(m);
+  return { ok: true, setNo };
+}
+
+async function addRally(sb, ctx, r) {
+  const { m, set, state } = ctx;
+  const A = m.team_a_id;
+  const scoreA = state.scoreA + (r.pt === A ? 1 : 0);
+  const scoreB = state.scoreB + (r.pt === A ? 0 : 1);
+  const { error } = await sb.from('rallies').insert({
+    match_id: m.id, set_number: set.set_number, seq: state.rallies + 1,
+    serving_team_id: state.serving, server_player_id: state.server, point_team_id: r.pt,
+    action: r.action, scorer_player_id: r.scorer || null, error_player_id: r.errP || null, error_kind: r.errorKind || null,
+    score_a: scoreA, score_b: scoreB,
+  });
+  if (error) return { error: 'Could not save the point. Please try again.' };
+  const winner = setWinner(scoreA, scoreB, targetFor(set.set_number, m.best_of));
+  await sb.from('match_sets').update({ points_a: scoreA, points_b: scoreB, completed: !!winner }).eq('id', set.id);
+  let matchOver = false;
+  if (winner) {
+    const { data: all } = await sb.from('match_sets').select('points_a,points_b,completed').eq('match_id', m.id);
+    const wa = (all || []).filter((s) => s.completed && s.points_a > s.points_b).length;
+    const wb = (all || []).filter((s) => s.completed && s.points_b > s.points_a).length;
+    const need = setsToWin(m.best_of);
+    if (wa >= need || wb >= need) {
+      matchOver = true;
+      await sb.from('matches').update({ status: 'completed', winner_team_id: wa >= need ? m.team_a_id : m.team_b_id, ended_at: new Date().toISOString() }).eq('id', m.id);
+    }
+  }
+  refreshMatch(m);
+  return { ok: true, scoreA, scoreB, setOver: !!winner, matchOver };
+}
+
+function playing(ctx) {
+  const { m, set, state } = ctx;
+  return !!(m && set && state && m.status !== 'completed' && !set.completed);
+}
+
+export async function scorePoint(input) {
+  const sb = supabaseServer();
+  const ctx = await scoringState(sb, input.matchId, input.setNo);
+  if (!ctx || !playing(ctx)) return { error: 'This set is not in play.' };
+  const { m, state, roster } = ctx;
+  const pt = input.pointTeam;
+  if (![m.team_a_id, m.team_b_id].includes(pt)) return { error: 'Choose the team that won the point.' };
+  const other = pt === m.team_a_id ? m.team_b_id : m.team_a_id;
+  const isLibero = (id) => roster.some((x) => x.player_id === id && x.is_libero);
+  const action = input.action;
+  let scorer = null;
+  let errP = null;
+  if (['kill', 'block', 'ace'].includes(action)) {
+    scorer = input.scorer;
+    const i = state.court[pt].indexOf(scorer);
+    if (i < 0) return { error: 'That player is not on the court.' };
+    if (isLibero(scorer) && action !== 'ace') return { error: 'The libero cannot score an attack or block point.' };
+    if (action === 'ace' && (pt !== state.serving || scorer !== state.server)) return { error: 'An ace must be scored by the player who is serving.' };
+    if (action === 'block' && (i < 1 || i > 3)) return { error: 'Only a front-row player can score a block.' };
+  } else if (action === 'opp_error') {
+    errP = input.errorPlayer || null;
+    if (errP && !state.court[other].includes(errP)) return { error: 'That player is not on the court.' };
+  } else {
+    return { error: 'Unknown action.' };
+  }
+  return addRally(sb, ctx, { pt, action, scorer, errP, errorKind: input.errorKind });
+}
+
+// Yellow card (penalty) and delay penalty: point and service go to the opponent.
+export async function givePenalty(input) {
+  const sb = supabaseServer();
+  const ctx = await scoringState(sb, input.matchId, input.setNo);
+  if (!ctx || !playing(ctx)) return { error: 'This set is not in play.' };
+  const { m } = ctx;
+  if (![m.team_a_id, m.team_b_id].includes(input.teamId)) return { error: 'Choose the team.' };
+  if (!['yellow', 'delay'].includes(input.kind)) return { error: 'Unknown penalty.' };
+  const pt = input.teamId === m.team_a_id ? m.team_b_id : m.team_a_id;
+  return addRally(sb, ctx, { pt, action: 'penalty', scorer: null, errP: input.playerId || null, errorKind: input.kind });
+}
+
+export async function undoLast(input) {
+  const sb = supabaseServer();
+  const { data: m } = await sb.from('matches').select('id,status,team_a_id,team_b_id,competition_id').eq('id', input.matchId).maybeSingle();
+  if (!m) return { error: 'Match not found.' };
+  const { data: rs } = await sb.from('rallies').select('*').eq('match_id', m.id).eq('set_number', input.setNo).order('seq', { ascending: false }).limit(1);
+  const { data: es } = await sb.from('match_events').select('*').eq('match_id', m.id).eq('set_number', input.setNo).order('created_at', { ascending: false }).limit(1);
+  const r = (rs || [])[0];
+  const e = (es || [])[0];
+  if (!r && !e) {
+    // Nothing played in this set: remove the empty set so the lineups can be chosen again.
+    await sb.from('set_lineups').delete().eq('match_id', m.id).eq('set_number', input.setNo);
+    await sb.from('match_sets').delete().eq('match_id', m.id).eq('set_number', input.setNo);
+    const { data: left } = await sb.from('match_sets').select('set_number').eq('match_id', m.id);
+    if (!(left || []).length) await sb.from('matches').update({ status: 'scheduled', started_at: null }).eq('id', m.id);
+    refreshMatch(m);
+    return { ok: true, undone: 'set' };
+  }
+  if (e && (!r || new Date(e.created_at) > new Date(r.created_at))) {
+    await sb.from('match_events').delete().eq('id', e.id);
+    refreshMatch(m);
+    return { ok: true, undone: 'event' };
+  }
+  await sb.from('rallies').delete().eq('id', r.id);
+  await sb.from('match_sets').update({
+    points_a: r.score_a - (r.point_team_id === m.team_a_id ? 1 : 0),
+    points_b: r.score_b - (r.point_team_id === m.team_b_id ? 1 : 0),
+    completed: false,
+  }).eq('match_id', m.id).eq('set_number', input.setNo);
+  if (m.status === 'completed') await sb.from('matches').update({ status: 'live', winner_team_id: null, ended_at: null }).eq('id', m.id);
+  refreshMatch(m);
+  return { ok: true, undone: 'point' };
+    }
