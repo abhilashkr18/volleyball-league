@@ -56,7 +56,8 @@ export default async function AdminMatches({ params, searchParams }) {
         <form action={deleteMatch} className="panel" key={m.id} style={{ display: 'flex', gap: '.8rem', alignItems: 'center' }}>
           <input type="hidden" name="competition_id" value={comp.id} />
           <input type="hidden" name="id" value={m.id} />
-          <span style={{ flex: 1 }}><b>{m.team_a?.name} vs {m.team_b?.name}</b><br /><span className="muted">{m.round_label ? `${m.round_label} · ` : ''}{fmt(m.scheduled_at)} · Best of {m.best_of} · {m.status}</span></span>
+                    <span style={{ flex: 1 }}><b>{m.team_a?.name} vs {m.team_b?.name}</b><br /><span className="muted">{m.round_label ? `${m.round_label} · ` : ''}{fmt(m.scheduled_at)} · Best of {m.best_of} · {m.status}</span></span>
+          <Link className="btn" href={`/admin/matches/${m.id}/setup`} style={{ padding: '.4rem 1rem' }}>Set up</Link>
           <button className="btn-line">Delete</button>
         </form>
       ))}
