@@ -410,3 +410,45 @@ export async function deleteMatch(formData) {
   revalidatePath(`/competitions/${cid}`);
   redirect(`/admin/competitions/${cid}/matches`);
 }
+export async function saveMatchSetup(formData) {
+  const sb = supabaseServer();
+  const mid = String(formData.get('match_id'));
+  const back = (q) => redirect(`/admin/matches/${mid}/setup?${q}`);
+  const { data: m } = await sb.from('matches').select('id,status,team_a_id,team_b_id,competition_id').eq('id', mid).maybeSingle();
+  if (!m) back('error=1');
+  if (m.status !== 'scheduled') back('error=2');
+  const { data: regs } = await sb.from('competition_players').select('player_id,team_id').eq('competition_id', m.competition_id).in('team_id', [m.team_a_id, m.team_b_id]);
+  const rows = [];
+  for (const r of regs || []) {
+    if (formData.get(`in_${r.player_id}`) !== 'on') continue;
+    const j = String(formData.get(`jersey_${r.player_id}`) || '');
+    if (j === '') back('error=3');
+    rows.push({ match_id: mid, team_id: r.team_id, player_id: r.player_id, jersey_number: Number(j), is_libero: formData.get(`lib_${r.player_id}`) === 'on' });
+  }
+  for (const tid of [m.team_a_id, m.team_b_id]) {
+    const mine = rows.filter((x) => x.team_id === tid);
+    if (mine.length > 12) back('error=4');
+    if (mine.filter((x) => x.is_libero).length > 2) back('error=5');
+    if (new Set(mine.map((x) => x.jersey_number)).size !== mine.length) back('error=6');
+  }
+  const toss = String(formData.get('toss_winner') || '');
+  const txt = (k) => String(formData.get(k) || '').trim() || null;
+  const { error: e1 } = await sb.from('matches').update({
+    first_referee: txt('first_referee'),
+    second_referee: txt('second_referee'),
+    scorer_name: txt('scorer_name'),
+    line_judges: txt('line_judges'),
+    commissioner: txt('commissioner'),
+    toss_winner_team_id: [m.team_a_id, m.team_b_id].includes(toss) ? toss : null,
+    toss_choice: toss ? String(formData.get('toss_choice') || '') || null : null,
+  }).eq('id', mid);
+  if (e1) back('error=7');
+  await sb.from('set_lineups').delete().eq('match_id', mid);
+  await sb.from('match_rosters').delete().eq('match_id', mid);
+  if (rows.length) {
+    const { error: e2 } = await sb.from('match_rosters').insert(rows);
+    if (e2) back('error=7');
+  }
+  revalidatePath(`/admin/matches/${mid}/setup`);
+  back('ok=1');
+}
