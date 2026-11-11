@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { supabaseServer } from '@/lib/supabase/server';
 import StartSetForm from '@/components/StartSetForm';
+import ScoreConsole from '@/components/ScoreConsole';
 
 export const dynamic = 'force-dynamic';
 
@@ -27,16 +28,31 @@ export default async function ScoreMatch({ params }) {
     return (<main className="wrap" style={{ maxWidth: 720 }}>{back}<h1>{title}</h1><div className="warn">Match completed. {w.name} won.</div><Link className="btn" href={`/matches/${m.id}`}>Open match page</Link></main>);
   }
 
+  const finished = (sets || []).filter((s) => s.completed);
+
   if (active) {
+    const [{ data: lu }, { data: rl }] = await Promise.all([
+      sb.from('set_lineups').select('team_id,slot,player_id').eq('match_id', m.id).eq('set_number', active.set_number),
+      sb.from('rallies').select('seq,point_team_id').eq('match_id', m.id).eq('set_number', active.set_number).order('seq'),
+    ]);
+    const line = (tid) => { const arr = ['', '', '', '', '', '']; (lu || []).filter((x) => x.team_id === tid).forEach((x) => { arr[x.slot - 1] = x.player_id; }); return arr; };
+    const everyone = [...list(m.team_a.id), ...list(m.team_b.id)];
     return (
-      <main className="wrap" style={{ maxWidth: 720 }}>
-        {back}<h1>{title}</h1>
-        <div className="panel">
-          <h3>Set {active.set_number} in play</h3>
-          <p style={{ fontSize: '2rem', margin: 0 }}><b>{active.points_a}</b> - <b>{active.points_b}</b></p>
-          <p className="muted">The live scoring console arrives in the next step.</p>
-        </div>
-      </main>
+      <ScoreConsole
+        key={active.set_number}
+        matchId={m.id}
+        backHref={`/admin/competitions/${m.competition_id}/matches`}
+        bestOf={m.best_of}
+        setNo={active.set_number}
+        teamA={m.team_a}
+        teamB={m.team_b}
+        players={everyone}
+        lineupA={line(m.team_a.id)}
+        lineupB={line(m.team_b.id)}
+        firstServe={active.first_serve_team_id}
+        initialRallies={rl || []}
+        setsWon={{ a: finished.filter((s) => s.points_a > s.points_b).length, b: finished.filter((s) => s.points_b > s.points_a).length }}
+      />
     );
   }
 
@@ -62,7 +78,8 @@ export default async function ScoreMatch({ params }) {
     <main className="wrap" style={{ maxWidth: 720 }}>
       {back}<h1>{title}</h1>
       <p className="muted">Best of {m.best_of}. Sets played: {(sets || []).length}</p>
+      {finished.length > 0 && <div className="warn">Set {finished[finished.length - 1].set_number} finished {finished[finished.length - 1].points_a} - {finished[finished.length - 1].points_b}. Choose the lineups for the next set.</div>}
       <StartSetForm matchId={m.id} setNo={setNo} teamA={m.team_a} teamB={m.team_b} playersA={list(m.team_a.id)} playersB={list(m.team_b.id)} initialA={initialA} initialB={initialB} defaultServe={defaultServe} />
     </main>
   );
-        }
+}
