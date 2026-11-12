@@ -19,7 +19,7 @@ export default async function ScoreMatch({ params }) {
   if ((ros || []).length === 0) {
     return (<main className="wrap" style={{ maxWidth: 720 }}>{back}<h1>Score match</h1><div className="warn">Save the match setup (roster and jersey numbers) first.</div><Link className="btn" href={`/admin/matches/${m.id}/setup`}>Open match setup</Link></main>);
   }
-  const list = (tid) => (ros || []).filter((r) => r.team_id === tid).map((r) => ({ id: r.player_id, name: r.players?.full_name || 'Player', jersey: r.jersey_number, isLibero: r.is_libero }));
+  const list = (tid) => (ros || []).filter((r) => r.team_id === tid).map((r) => ({ teamId: tid, id: r.player_id, name: r.players?.full_name || 'Player', jersey: r.jersey_number, isLibero: r.is_libero }));
   const active = (sets || []).find((s) => !s.completed);
   const title = `${m.team_a.name} vs ${m.team_b.name}`;
 
@@ -31,9 +31,10 @@ export default async function ScoreMatch({ params }) {
   const finished = (sets || []).filter((s) => s.completed);
 
   if (active) {
-    const [{ data: lu }, { data: rl }] = await Promise.all([
+        const [{ data: lu }, { data: rl }, { data: ev }] = await Promise.all([
       sb.from('set_lineups').select('team_id,slot,player_id').eq('match_id', m.id).eq('set_number', active.set_number),
       sb.from('rallies').select('seq,point_team_id').eq('match_id', m.id).eq('set_number', active.set_number).order('seq'),
+                sb.from('match_events').select('*').eq('match_id', m.id).eq('set_number', active.set_number).order('created_at'),
     ]);
     const line = (tid) => { const arr = ['', '', '', '', '', '']; (lu || []).filter((x) => x.team_id === tid).forEach((x) => { arr[x.slot - 1] = x.player_id; }); return arr; };
     const everyone = [...list(m.team_a.id), ...list(m.team_b.id)];
@@ -51,6 +52,7 @@ export default async function ScoreMatch({ params }) {
         lineupB={line(m.team_b.id)}
         firstServe={active.first_serve_team_id}
         initialRallies={rl || []}
+                initialEvents={ev || []}  
         setsWon={{ a: finished.filter((s) => s.points_a > s.points_b).length, b: finished.filter((s) => s.points_b > s.points_a).length }}
       />
     );
