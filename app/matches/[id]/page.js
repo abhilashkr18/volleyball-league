@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { supabaseServer } from '@/lib/supabase/server';
+import LiveMatch from '@/components/LiveMatch';
 
 export const dynamic = 'force-dynamic';
 
@@ -44,6 +45,21 @@ export default async function MatchPage({ params }) {
   const winsB = done.filter((s) => s.points_b > s.points_a).length;
   const winner = m.winner_team_id === m.team_a.id ? m.team_a : m.winner_team_id === m.team_b.id ? m.team_b : null;
   const when = m.scheduled_at ? new Date(m.scheduled_at).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', dateStyle: 'medium', timeStyle: 'short' }) : 'Time to be announced';
+    if (m.status === 'live') {
+    const { data: lr } = await sb.from('match_rosters').select('team_id,player_id,jersey_number,is_libero,players(full_name)').eq('match_id', m.id);
+    const livePlayers = (lr || []).map((r) => ({ id: r.player_id, teamId: r.team_id, jersey: r.jersey_number, isLibero: r.is_libero, name: r.players?.full_name || 'Player' }));
+    return (
+      <main className="wrap">
+        <p><Link href={`/competitions/${m.competitions?.id}`}>← {m.competitions?.name}</Link></p>
+        <LiveMatch matchId={m.id} bestOf={m.best_of} teamA={m.team_a} teamB={m.team_b} players={livePlayers} title={`${m.competitions?.sports?.name || ''}${m.round_label ? ` · ${m.round_label}` : ''} · Best of ${m.best_of}`} />
+        <div className="duo">
+          {[m.team_a, m.team_b].map((t) => (
+            <section className="box" key={t.id}><div className="hd"><h3>{t.name}</h3><span className="muted">{squad(t.id).length} players</span></div><Squad list={squad(t.id)} /></section>
+          ))}
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main className="wrap">
