@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { supabaseServer } from '@/lib/supabase/server';
 import LiveMatch from '@/components/LiveMatch';
+import MatchStats from '@/components/MatchStats';
+import { computeMatchStats } from '@/lib/stats';
 
 export const dynamic = 'force-dynamic';
 
@@ -45,7 +47,8 @@ export default async function MatchPage({ params }) {
   const winsB = done.filter((s) => s.points_b > s.points_a).length;
   const winner = m.winner_team_id === m.team_a.id ? m.team_a : m.winner_team_id === m.team_b.id ? m.team_b : null;
   const when = m.scheduled_at ? new Date(m.scheduled_at).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', dateStyle: 'medium', timeStyle: 'short' }) : 'Time to be announced';
-    if (m.status === 'live') {
+
+  if (m.status === 'live') {
     const { data: lr } = await sb.from('match_rosters').select('team_id,player_id,jersey_number,is_libero,players(full_name)').eq('match_id', m.id);
     const livePlayers = (lr || []).map((r) => ({ id: r.player_id, teamId: r.team_id, jersey: r.jersey_number, isLibero: r.is_libero, name: r.players?.full_name || 'Player' }));
     return (
@@ -59,6 +62,24 @@ export default async function MatchPage({ params }) {
         </div>
       </main>
     );
+  }
+
+  let stats = null;
+  if (m.status === 'completed') {
+    const [{ data: rr }, { data: rl }, { data: ev }] = await Promise.all([
+      sb.from('match_rosters').select('team_id,player_id,jersey_number,is_libero,players(full_name)').eq('match_id', m.id),
+      sb.from('rallies').select('set_number,seq,point_team_id,action,scorer_player_id,error_player_id,error_kind').eq('match_id', m.id),
+      sb.from('match_events').select('kind,player_id').eq('match_id', m.id),
+    ]);
+    if ((rl || []).length > 0) {
+      stats = computeMatchStats({
+        teamA: m.team_a.id,
+        teamB: m.team_b.id,
+        roster: (rr || []).map((r) => ({ player_id: r.player_id, team_id: r.team_id, jersey: r.jersey_number, isLibero: r.is_libero, name: r.players?.full_name || 'Player' })),
+        rallies: rl || [],
+        events: ev || [],
+      });
+    }
   }
 
   return (
@@ -97,6 +118,8 @@ export default async function MatchPage({ params }) {
         )}
       </section>
 
+      {stats && <MatchStats stats={stats} teamA={m.team_a} teamB={m.team_b} />}
+
       <div className="duo">
         {[m.team_a, m.team_b].map((t) => (
           <section className="box" key={t.id}><div className="hd"><h3>{t.name}</h3><span className="muted">{squad(t.id).length} players</span></div><Squad list={squad(t.id)} /></section>
@@ -104,4 +127,4 @@ export default async function MatchPage({ params }) {
       </div>
     </main>
   );
-}
+              }
