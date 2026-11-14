@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { supabaseServer } from '@/lib/supabase/server';
 import { replaySet, setWinner, targetFor, setsToWin, pendingBreak } from '@/lib/engine';
+import { ABOUT_FILES } from '@/lib/aboutContent';
 
 export async function signOut() {
   await supabaseServer().auth.signOut();
@@ -678,4 +679,40 @@ export async function recordEvent(input) {
   if (error) return { error: 'Could not save. Please try again.' };
   refreshMatch(m);
   return { ok: true };
+}
+// ---------- About section ----------
+export async function importAboutContent() {
+  const sb = supabaseServer();
+  const { data: existing } = await sb.from('about_pages').select('slug');
+  const have = new Set((existing || []).map((p) => p.slug));
+  let added = 0;
+  for (const file of ABOUT_FILES) {
+    for (const p of file.pages) {
+      if (have.has(p.slug)) continue;
+      const { data: row, error } = await sb.from('about_pages').insert({
+        slug: p.slug, tab: file.tab, sort_order: p.sort_order, accent: p.accent, published: p.published,
+        title_en: p.title_en, title_hi: p.title_hi, subtitle_en: p.subtitle_en, subtitle_hi: p.subtitle_hi,
+      }).select('id').single();
+      if (error || !row) redirect('/admin/about?error=1');
+      const blocks = p.blocks.map((b, i) => ({
+        page_id: row.id, sort_order: i, kind: b.kind,
+        heading_en: b.heading_en, heading_hi: b.heading_hi, body_en: b.body_en, body_hi: b.body_hi, images: b.images,
+      }));
+      const { error: e2 } = await sb.from('about_blocks').insert(blocks);
+      if (e2) {
+        await sb.from('about_pages').delete().eq('id', row.id);
+        redirect('/admin/about?error=2');
+      }
+      added += 1;
+    }
+  }
+  revalidatePath('/about');
+  revalidatePath('/admin/about');
+  redirect(`/admin/about?imported=${added}`);
+}
+
+export async function setAboutPageVisible(formData) {
+  await supabaseServer().from('about_pages').update({ published: formData.get('show') === 'true', updated_at: new Date().toISOString() }).eq('id', String(formData.get('id')));
+  revalidatePath('/about');
+  revalidatePath('/admin/about');
 }
