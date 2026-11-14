@@ -19,6 +19,7 @@ export default async function Dashboard() {
           <div className="cat"><h3>Videos</h3><Link className="btn" href="/admin/videos">Manage videos</Link></div>
           <div className="cat"><h3>Home content</h3><Link className="btn" href="/admin/home">Manage home</Link></div>
         <div className="cat"><h3>Competitions</h3><Link className="btn" href="/admin/competitions">Manage competitions</Link></div>
+          <div className="cat"><h3>About section</h3><Link className="btn" href="/admin/about">Manage About</Link></div>
       </div>
       <form action={signOut} style={{ marginTop: '1.5rem' }}><button className="ghost btn">Sign out</button></form>
     </main>
