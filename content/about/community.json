@@ -1,0 +1,154 @@
+{
+ "tab": "community",
+ "pages": [
+  {
+   "slug": "community-culture",
+   "sort_order": 700,
+   "accent": "lime",
+   "published": true,
+   "title_en": "Different homes. Different faiths. One shared ground.",
+   "title_hi": "अलग घर। अलग आस्थाएँ। एक साझा मैदान।",
+   "subtitle_en": "Ground Zero is maintained through participation rather than a formal club structure.",
+   "subtitle_hi": "ग्राउंड ज़ीरो औपचारिक क्लब ढाँचे से नहीं, भागीदारी से चलता है।",
+   "blocks": [
+    {
+     "kind": "gallery",
+     "heading_en": "",
+     "heading_hi": "",
+     "body_en": "",
+     "body_hi": "",
+     "images": [
+      {
+       "src": "/about/p29_i01.jpg",
+       "cap_en": "Players and the young generation",
+       "cap_hi": "खिलाड़ी और युवा पीढ़ी"
+      },
+      {
+       "src": "/about/p30_i01.jpg",
+       "cap_en": "Team moment",
+       "cap_hi": "टीम का पल"
+      },
+      {
+       "src": "/about/p02_i01.jpg",
+       "cap_en": "Local surroundings",
+       "cap_hi": "आसपास का इलाका"
+      }
+     ]
+    },
+    {
+     "kind": "text",
+     "heading_en": "How the ground is looked after",
+     "heading_hi": "मैदान की देखभाल कैसे होती है",
+     "body_en": "There is no formal official committee at present. Regular players help protect the pitches and the playing environment. Barun, Chutu, Firoz, Fuchi and others contribute; Firoz lives opposite the ground and is described as someone who keeps an eye on what happens there.\n\nAn older group once took a more formal role in maintaining the ground, but many of those players are now older and visit less often. KPL decisions are discussed collectively in player meetings. Barun has a particularly influential role across sports: players seek his experience in team decisions, and he also coaches younger footballers. Ground Zero has an Instagram channel that is still growing; training and match moments are sometimes shared as Reels.",
+     "body_hi": "फ़िलहाल कोई औपचारिक आधिकारिक समिति नहीं है। नियमित खिलाड़ी पिचों और खेल के माहौल की रक्षा में मदद करते हैं। बरुण, चुटू, फ़िरोज़, फुची और अन्य योगदान देते हैं; फ़िरोज़ मैदान के सामने रहते हैं और उन्हें ऐसा व्यक्ति बताया जाता है जो वहाँ क्या हो रहा है इस पर नज़र रखता है।\n\nएक पुराने समूह ने कभी मैदान की देखभाल में ज़्यादा औपचारिक भूमिका निभाई थी, लेकिन उनमें से कई खिलाड़ी अब बड़े हो गए हैं और कम आते हैं। केपीएल के फ़ैसले खिलाड़ियों की बैठकों में सामूहिक रूप से चर्चा करके लिए जाते हैं। बरुण की सभी खेलों में ख़ास प्रभावशाली भूमिका है: खिलाड़ी टीम के फ़ैसलों में उनका अनुभव माँगते हैं, और वे छोटे फुटबॉलरों को कोचिंग भी देते हैं। ग्राउंड ज़ीरो का एक इंस्टाग्राम चैनल है जो अभी बढ़ रहा है; प्रशिक्षण और मैच के पल कभी-कभी रील्स के रूप में साझा किए जाते हैं।",
+     "images": []
+    },
+    {
+     "kind": "text",
+     "heading_en": "Eid match tradition",
+     "heading_hi": "ईद मैच की परंपरा",
+     "body_en": "A remembered community tradition is a married-versus-unmarried match, bringing together Muslim fathers and sons. Players and supporters share refreshments such as cold drinks and samosas before the game. The winning side receives a treat from the losing side. Members who are not playing, including Hindu community members in the remembered tradition, help manage the match and are included in the hospitality.",
+     "body_hi": "समुदाय में याद की जाने वाली एक परंपरा शादीशुदा बनाम कुंवारों का मैच है, जिसमें मुस्लिम पिता और बेटे साथ आते हैं। खेल से पहले खिलाड़ी और समर्थक कोल्ड ड्रिंक और समोसे जैसे नाश्ते बाँटते हैं। जीतने वाली टीम को हारने वाली टीम से दावत मिलती है। जो सदस्य नहीं खेल रहे होते, याद की गई परंपरा में हिंदू समुदाय के सदस्यों समेत, वे मैच के प्रबंधन में मदद करते हैं और मेहमाननवाज़ी में शामिल रहते हैं।",
+     "images": [
+      {
+       "src": "/about/p02_i02.jpg",
+       "cap_en": "Eid match: married vs unmarried",
+       "cap_hi": "ईद का मैच: शादीशुदा बनाम कुंवारे"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "shared-resources",
+   "sort_order": 710,
+   "accent": "cyan",
+   "published": true,
+   "title_en": "Built together. Looked after together.",
+   "title_hi": "मिलकर बनाया। मिलकर संभाला।",
+   "subtitle_en": "The ground’s equipment and its stories are part of the same shared culture.",
+   "subtitle_hi": "मैदान के उपकरण और उसकी कहानियाँ एक ही साझा संस्कृति का हिस्सा हैं।",
+   "blocks": [
+    {
+     "kind": "gallery",
+     "heading_en": "",
+     "heading_hi": "",
+     "body_en": "",
+     "body_hi": "",
+     "images": [
+      {
+       "src": "/about/p30_i01.jpg",
+       "cap_en": "Team memory",
+       "cap_hi": "टीम की याद"
+      },
+      {
+       "src": "/about/p31_i01.jpg",
+       "cap_en": "Match moment",
+       "cap_hi": "मैच का पल"
+      },
+      {
+       "src": "/about/p33_i01.jpg",
+       "cap_en": "Players at the ground",
+       "cap_hi": "मैदान पर खिलाड़ी"
+      }
+     ]
+    },
+    {
+     "kind": "text",
+     "heading_en": "Shared equipment",
+     "heading_hi": "साझा उपकरण",
+     "body_en": "Players contribute money together to buy balls, nets and other equipment. Some players also buy equipment individually. The ground has around 6-8 shared cricket bats, and visiting players sometimes borrow bats. Players who receive bats or balls while playing outside may later donate them to Ground Zero.",
+     "body_hi": "खिलाड़ी गेंद, नेट और अन्य उपकरण खरीदने के लिए मिलकर पैसे जुटाते हैं। कुछ खिलाड़ी व्यक्तिगत रूप से भी उपकरण खरीदते हैं। मैदान में लगभग 6-8 साझा क्रिकेट बल्ले हैं, और मेहमान खिलाड़ी कभी-कभी बल्ले उधार लेते हैं। जो खिलाड़ी बाहर खेलते हुए बल्ले या गेंद पाते हैं, वे बाद में उन्हें ग्राउंड ज़ीरो को दान कर सकते हैं।",
+     "images": []
+    }
+   ]
+  },
+  {
+   "slug": "special-memory-2020",
+   "sort_order": 720,
+   "accent": "orange",
+   "published": false,
+   "title_en": "The evening the match scattered.",
+   "title_hi": "वह शाम जब मैच बिखर गया।",
+   "subtitle_en": "A detailed community recollection from the COVID lockdown period.",
+   "subtitle_hi": "कोविड लॉकडाउन के दौर की समुदाय की एक विस्तृत याद।",
+   "blocks": [
+    {
+     "kind": "gallery",
+     "heading_en": "",
+     "heading_hi": "",
+     "body_en": "",
+     "body_hi": "",
+     "images": [
+      {
+       "src": "/about/p31_i01.jpg",
+       "cap_en": "Cricket memory photo",
+       "cap_hi": "क्रिकेट की याद की तस्वीर"
+      },
+      {
+       "src": "/about/p34_i01.jpg",
+       "cap_en": "Kasigoda playing area",
+       "cap_hi": "कासीगोड़ा का खेल मैदान"
+      }
+     ]
+    },
+    {
+     "kind": "text",
+     "heading_en": "The lockdown match, 2020",
+     "heading_hi": "लॉकडाउन मैच, 2020",
+     "body_en": "Around August or September 2020, more than 30 players and a large audience gathered for an evening cricket match during lockdown. A complaint had reportedly been made about a separate group of men who regularly gathered in nearby fields; the cricket players were not the original focus of the police visit. Four officers were remembered as being involved: some questioned people in the society while others went towards the fields.\n\nA phone was left at the ground and later returned by another player. Wickets and a bat were damaged, and a ball went missing. Players stayed away for a period, checked on one another and reassured worried parents. Nobody from the group was caught, as remembered by the players.",
+     "body_hi": "लगभग अगस्त या सितंबर 2020 में, लॉकडाउन के दौरान शाम के क्रिकेट मैच के लिए 30 से ज़्यादा खिलाड़ी और बड़ी संख्या में दर्शक इकट्ठा हुए। बताया जाता है कि पास के खेतों में नियमित रूप से जुटने वाले आदमियों के एक अलग समूह की शिकायत की गई थी; पुलिस की उस यात्रा का मूल निशाना क्रिकेट खिलाड़ी नहीं थे। चार अधिकारियों की मौजूदगी याद की जाती है: कुछ ने सोसाइटी में लोगों से पूछताछ की जबकि बाकी खेतों की ओर गए।\n\nएक फ़ोन मैदान पर छूट गया था और बाद में किसी दूसरे खिलाड़ी ने लौटा दिया। विकेट और एक बल्ला टूट गए, और एक गेंद गुम हो गई। खिलाड़ी कुछ समय के लिए दूर रहे, एक-दूसरे का हाल पूछते रहे और चिंतित माता-पिता को भरोसा दिलाया। खिलाड़ियों की याद के अनुसार समूह का कोई भी पकड़ा नहीं गया।",
+     "images": []
+    },
+    {
+     "kind": "steps",
+     "heading_en": "The sequence, as remembered",
+     "heading_hi": "जैसा याद है, घटनाक्रम",
+     "body_en": "The warning | A player at home called to say police were entering the society. The wicketkeeper ran to warn the players, but many did not believe it until a fielder at third man spotted the police vehicle. Some players ran towards the fields; others went into nearby homes, including Barun’s home and another society home.\nThe scatter | More than 30 players ran in different directions. Some headed towards nearby fields; others entered houses in the society. Don and Chutu took shelter in a garden near the ground, then moved to the roof of a two-storey house and watched the police activity from above.\nThe wait | Players stayed hidden for around two hours. Don used his phone to pass on updates about police movement. Parents were worried and players called one another to confirm they were safe.\nThe aftermath | Chutu had left his phone near the wickets; another player had picked it up and returned it later. Police broke the wickets and a bat, and a ball was missing. The players reduced their visits to the ground for a period. Nobody from the group was caught, according to the recollection.",
+     "body_hi": "चेतावनी | घर पर मौजूद एक खिलाड़ी ने फ़ोन करके बताया कि पुलिस सोसाइटी में घुस रही है। विकेटकीपर खिलाड़ियों को आगाह करने दौड़ा, लेकिन कई लोगों को तब तक यक़ीन नहीं हुआ जब तक थर्ड मैन पर खड़े एक फ़ील्डर ने पुलिस की गाड़ी नहीं देख ली। कुछ खिलाड़ी खेतों की ओर भागे; बाकी पास के घरों में चले गए, जिनमें बरुण का घर और सोसाइटी का एक और घर शामिल था।\nभगदड़ | 30 से ज़्यादा खिलाड़ी अलग-अलग दिशाओं में भागे। कुछ पास के खेतों की ओर गए; कुछ सोसाइटी के घरों में घुस गए। डॉन और चुटू ने मैदान के पास एक बगीचे में शरण ली, फिर एक दो-मंज़िला घर की छत पर चले गए और ऊपर से पुलिस की हलचल देखते रहे।\nइंतज़ार | खिलाड़ी लगभग दो घंटे छिपे रहे। डॉन ने अपने फ़ोन से पुलिस की हरकत की ख़बरें आगे पहुँचाईं। माता-पिता चिंतित थे और खिलाड़ी एक-दूसरे को फ़ोन करके सुरक्षित होने की पुष्टि करते रहे।\nउसके बाद | चुटू अपना फ़ोन विकेटों के पास छोड़ गए थे; किसी दूसरे खिलाड़ी ने उसे उठाकर बाद में लौटा दिया। पुलिस ने विकेट और एक बल्ला तोड़ दिए, और एक गेंद गुम थी। खिलाड़ियों ने कुछ समय के लिए मैदान आना कम कर दिया। याद के अनुसार समूह का कोई भी पकड़ा नहीं गया।",
+     "images": []
+    }
+   ]
+  }
+ ]
+}
