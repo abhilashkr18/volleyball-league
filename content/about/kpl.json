@@ -1,0 +1,334 @@
+{
+ "tab": "kpl",
+ "pages": [
+  {
+   "slug": "kpl-league",
+   "sort_order": 400,
+   "accent": "gold",
+   "published": true,
+   "title_en": "KPL. The annual domestic cricket league.",
+   "title_hi": "केपीएल। सालाना घरेलू क्रिकेट लीग।",
+   "subtitle_en": "The flagship player-owned, player-run tournament at Kasigoda Ground.",
+   "subtitle_hi": "कासीगोड़ा ग्राउंड का सबसे बड़ा, खिलाड़ियों के मालिकाना हक़ और संचालन वाला टूर्नामेंट।",
+   "blocks": [
+    {
+     "kind": "gallery",
+     "heading_en": "",
+     "heading_hi": "",
+     "body_en": "",
+     "body_hi": "",
+     "images": [
+      {
+       "src": "/about/p09_i02.jpg",
+       "cap_en": "KPL Season 2 winners / Barun team",
+       "cap_hi": "केपीएल सीज़न 2 विजेता / बरुण की टीम"
+      },
+      {
+       "src": "/about/p10_i01.jpg",
+       "cap_en": "Season 5 winners",
+       "cap_hi": "सीज़न 5 विजेता"
+      },
+      {
+       "src": "/about/p09_i01.jpg",
+       "cap_en": "KPL moment",
+       "cap_hi": "केपीएल का एक पल"
+      }
+     ]
+    },
+    {
+     "kind": "stats",
+     "heading_en": "League format",
+     "heading_hi": "लीग का स्वरूप",
+     "body_en": "2022 | Started\n3 | Teams each season\n5-7 | Players per squad\nTop 2 | Reach the final\n6 AM | Typical match start",
+     "body_hi": "2022 | शुरुआत\n3 | हर सीज़न टीमें\n5-7 | हर टीम में खिलाड़ी\nटॉप 2 | फ़ाइनल में पहुँचती हैं\nसुबह 6 बजे | आम मैच शुरुआत",
+     "images": []
+    },
+    {
+     "kind": "text",
+     "heading_en": "",
+     "heading_hi": "",
+     "body_en": "KPL began in 2022. Three teams compete each year. Each team generally plays three to four matches; standings are decided using points and run rate, and the top two teams advance to the final.",
+     "body_hi": "केपीएल की शुरुआत 2022 में हुई। हर साल तीन टीमें मुकाबला करती हैं। हर टीम आमतौर पर तीन से चार मैच खेलती है; स्थान अंकों और रन रेट से तय होते हैं, और शीर्ष दो टीमें फ़ाइनल में पहुँचती हैं।",
+     "images": []
+    },
+    {
+     "kind": "text",
+     "heading_en": "The KPL experience",
+     "heading_hi": "केपीएल का अनुभव",
+     "body_en": "A one-week-style tournament in its usual form, with an auction evening followed two days later by the start of play. KPL Season 5 ran longer: it began on 25 December 2025 and concluded on 28 January 2026, with matches held on Sundays.\n\nLive scoring is recorded through a mobile app, helping maintain a shared score record.",
+     "body_hi": "अपने आम रूप में एक हफ़्ते जैसा टूर्नामेंट, जिसमें नीलामी की शाम के दो दिन बाद खेल शुरू होता है। केपीएल सीज़न 5 लंबा चला: यह 25 दिसंबर 2025 को शुरू होकर 28 जनवरी 2026 को खत्म हुआ, और मैच रविवार को हुए।\n\nलाइव स्कोरिंग मोबाइल ऐप से दर्ज की जाती है, जिससे साझा स्कोर रिकॉर्ड बना रहता है।",
+     "images": []
+    }
+   ]
+  },
+  {
+   "slug": "kpl-auction",
+   "sort_order": 410,
+   "accent": "gold",
+   "published": true,
+   "title_en": "Paper slips. Live bidding. Team-building strategy.",
+   "title_hi": "काग़ज़ की पर्चियाँ। लाइव बोली। टीम बनाने की रणनीति।",
+   "subtitle_en": "KPL’s auction is a community-run process held at the ground.",
+   "subtitle_hi": "केपीएल की नीलामी मैदान पर समुदाय द्वारा चलाई जाने वाली प्रक्रिया है।",
+   "blocks": [
+    {
+     "kind": "steps",
+     "heading_en": "",
+     "heading_hi": "",
+     "body_en": "Meeting & rules | Players discuss dates and tournament arrangements. A fixed purse is decided; it is usually around Rs 30, sometimes up to Rs 50 (recalled estimate).\nPlayer slips | Auctioneer Don prepares player-name slips and a written team register.\nCircular seating | The three team owners sit in a circle. Don shuffles and draws one player slip at a time.\nBidding | Owners bid in turn. If a team passes on a player, it cannot re-enter that player’s bidding.\nPlayer awarded | The highest bid wins the player. Don records the player’s name, team and price.\nSquad complete | Each team must buy at least 5 and at most 7 players. The owner can also play; a maximum of two outsiders may be included. A captain is then chosen from within the team.",
+     "body_hi": "बैठक और नियम | खिलाड़ी तारीख़ों और टूर्नामेंट की व्यवस्था पर चर्चा करते हैं। एक तय पर्स रखा जाता है; यह आमतौर पर लगभग 30 रुपये होता है, कभी-कभी 50 रुपये तक (याद से लगाया अनुमान)।\nखिलाड़ी पर्चियाँ | नीलामीकर्ता डॉन खिलाड़ियों के नामों की पर्चियाँ और एक लिखित टीम रजिस्टर तैयार करते हैं।\nगोल घेरे में बैठना | तीनों टीम मालिक गोल घेरे में बैठते हैं। डॉन पर्चियाँ फेंटकर एक-एक खिलाड़ी की पर्ची निकालते हैं।\nबोली | मालिक बारी-बारी से बोली लगाते हैं। अगर कोई टीम किसी खिलाड़ी पर बोली छोड़ देती है, तो वह उस खिलाड़ी की बोली में दोबारा नहीं आ सकती।\nखिलाड़ी का मिलना | सबसे ऊँची बोली लगाने वाली टीम को खिलाड़ी मिलता है। डॉन खिलाड़ी का नाम, टीम और कीमत दर्ज करते हैं।\nटीम पूरी | हर टीम को कम से कम 5 और ज़्यादा से ज़्यादा 7 खिलाड़ी खरीदने होते हैं। मालिक भी खेल सकता है; ज़्यादा से ज़्यादा दो बाहरी खिलाड़ी शामिल हो सकते हैं। फिर टीम के भीतर से कप्तान चुना जाता है।",
+     "images": []
+    },
+    {
+     "kind": "note",
+     "heading_en": "The currently reported auction settings",
+     "heading_hi": "फ़िलहाल बताई गई नीलामी सेटिंग",
+     "body_en": "Base price: about Rs 2 for younger / newer players and about Rs 4 for senior players. A reported maximum bid is around Rs 10, and only one player may be bought at that top price. These amounts are recalled estimates and are to be confirmed.\n\nEach team generally has one owner. Ownership can change; registration and player entry fees are revised each year. Auction timing needs confirmation: one recollection says evening, another says morning.",
+     "body_hi": "बेस प्राइस: युवा / नए खिलाड़ियों के लिए लगभग 2 रुपये और सीनियर खिलाड़ियों के लिए लगभग 4 रुपये। बताई गई अधिकतम बोली लगभग 10 रुपये है, और उस सबसे ऊँची कीमत पर केवल एक ही खिलाड़ी खरीदा जा सकता है। ये रकमें याद से लगाए अनुमान हैं, जिनकी पुष्टि बाकी है।\n\nहर टीम का आमतौर पर एक मालिक होता है। मालिकाना बदल सकता है; रजिस्ट्रेशन और खिलाड़ी एंट्री फ़ीस हर साल बदली जाती है। नीलामी का समय पुष्टि माँगता है: एक याद शाम बताती है, दूसरी सुबह।",
+     "images": []
+    }
+   ]
+  },
+  {
+   "slug": "kpl-owners",
+   "sort_order": 420,
+   "accent": "gold",
+   "published": true,
+   "title_en": "The people behind the three teams.",
+   "title_hi": "तीन टीमों के पीछे के लोग।",
+   "subtitle_en": "Team names are newly chosen each season by owners and captains; this page uses team numbers for the archive.",
+   "subtitle_hi": "टीमों के नाम हर सीज़न मालिक और कप्तान नए सिरे से चुनते हैं; संग्रह के लिए यह पेज टीम नंबर इस्तेमाल करता है।",
+   "blocks": [
+    {
+     "kind": "cards",
+     "heading_en": "",
+     "heading_hi": "",
+     "body_en": "Team 01 · Barun | Owner; champion in KPL Seasons 1 and 2. His team is remembered as having reached every completed final so far.\nTeam 02 · Raj (Chutu) | Owner; champion in KPL Seasons 4 and 5.\nTeam 03 · MD Suhaib | Owner from Season 3 onward; reached two finals but has not won a title so far, according to the current record.",
+     "body_hi": "टीम 01 · बरुण | मालिक; केपीएल सीज़न 1 और 2 के विजेता। उनकी टीम अब तक हर पूरे हुए फ़ाइनल में पहुँचने के लिए याद की जाती है।\nटीम 02 · राज (चुटू) | मालिक; केपीएल सीज़न 4 और 5 के विजेता।\nटीम 03 · एमडी सुहैब | सीज़न 3 से मालिक; दो फ़ाइनल खेले, पर मौजूदा रिकॉर्ड के अनुसार अब तक कोई खिताब नहीं जीता।",
+     "images": []
+    },
+    {
+     "kind": "timeline",
+     "heading_en": "Season record so far",
+     "heading_hi": "अब तक का सीज़न रिकॉर्ड",
+     "body_en": "KPL 1 | Champion | Barun team\nKPL 2 | Champion | Barun team (photo available)\nKPL 3 | Cancelled | Cancelled in 2024 following a dispute over a no-ball / wicket decision\nKPL 4 | Champion | Raj (Chutu) team\nKPL 5 | Champion | Raj (Chutu) team (photo available)",
+     "body_hi": "केपीएल 1 | विजेता | बरुण की टीम\nकेपीएल 2 | विजेता | बरुण की टीम (फ़ोटो मौजूद)\nकेपीएल 3 | रद्द | 2024 में नो-बॉल / विकेट के फ़ैसले पर विवाद के बाद रद्द\nकेपीएल 4 | विजेता | राज (चुटू) की टीम\nकेपीएल 5 | विजेता | राज (चुटू) की टीम (फ़ोटो मौजूद)",
+     "images": []
+    },
+    {
+     "kind": "text",
+     "heading_en": "Former ownership",
+     "heading_hi": "पहले का मालिकाना",
+     "body_en": "Rizwan was an owner in Seasons 1 and 2. After not winning a title, he stepped away from ownership and returned as a player. MD Suhaib took the third team ownership role from Season 3. Rizwan is remembered as having reached one final as owner, but did not win the title.\n\nOwners and captains have so far remained consistent for the three team slots, but the community has said ownership may change in future.",
+     "body_hi": "रिज़वान सीज़न 1 और 2 में मालिक थे। खिताब न जीत पाने के बाद उन्होंने मालिकाना छोड़ा और खिलाड़ी के रूप में लौट आए। एमडी सुहैब ने सीज़न 3 से तीसरी टीम का मालिकाना संभाला। रिज़वान को मालिक के रूप में एक फ़ाइनल तक पहुँचने के लिए याद किया जाता है, पर खिताब नहीं जीता।\n\nतीनों टीम स्लॉट के मालिक और कप्तान अब तक एक जैसे रहे हैं, लेकिन समुदाय का कहना है कि आगे मालिकाना बदल सकता है।",
+     "images": []
+    }
+   ]
+  },
+  {
+   "slug": "kpl-season-3",
+   "sort_order": 430,
+   "accent": "orange",
+   "published": false,
+   "title_en": "The disputed no-ball. The season that stopped.",
+   "title_hi": "विवादित नो-बॉल। वह सीज़न जो रुक गया।",
+   "subtitle_en": "A difficult episode in the league’s history, recorded from the community’s recollection.",
+   "subtitle_hi": "लीग के इतिहास का एक कठिन प्रसंग, समुदाय की याद से दर्ज।",
+   "blocks": [
+    {
+     "kind": "text",
+     "heading_en": "The match incident",
+     "heading_hi": "मैच की घटना",
+     "body_en": "During a match between Barun’s team and Rizwan’s team, Barun was given out on a delivery that the umpire ruled a no-ball. The ground management’s account was that an opposing fielder had been outside the boundary before the delivery and entered the field after the ball was bowled; the management noticed this and brought it to the umpire’s attention.\n\nThe umpire awarded the no-ball, but the opposing side disputed the decision because Barun’s wicket was considered important. At Kasigoda, the umpire’s decision is treated as final. The disagreement escalated into a serious dispute, and the organisers cancelled KPL Season 3 in 2024.\n\nThe event is remembered as a turning point for the tournament. It is included here as a record of the league’s history, not to single out or blame individual players.",
+     "body_hi": "बरुण की टीम और रिज़वान की टीम के बीच एक मैच में, बरुण को एक ऐसी गेंद पर आउट दिया गया जिसे अंपायर ने नो-बॉल करार दिया। मैदान प्रबंधन का कहना था कि विरोधी टीम का एक फ़ील्डर गेंद फेंके जाने से पहले बाउंड्री के बाहर था और गेंद फेंकने के बाद मैदान में आया; प्रबंधन ने यह देखा और अंपायर के ध्यान में लाया।\n\nअंपायर ने नो-बॉल दी, लेकिन विरोधी पक्ष ने इस फ़ैसले का विरोध किया क्योंकि बरुण का विकेट अहम माना जा रहा था। कासीगोड़ा में अंपायर का फ़ैसला अंतिम माना जाता है। असहमति गंभीर विवाद में बदल गई, और आयोजकों ने 2024 में केपीएल सीज़न 3 रद्द कर दिया।\n\nइस घटना को टूर्नामेंट के लिए एक मोड़ के रूप में याद किया जाता है। इसे यहाँ लीग के इतिहास के रिकॉर्ड के रूप में रखा गया है, किसी खिलाड़ी को निशाना बनाने या दोष देने के लिए नहीं।",
+     "images": []
+    },
+    {
+     "kind": "note",
+     "heading_en": "Status",
+     "heading_hi": "स्थिति",
+     "body_en": "KPL Season 3 was cancelled; it is not a completed champion season.",
+     "body_hi": "केपीएल सीज़न 3 रद्द हुआ था; यह कोई पूरा हुआ विजेता सीज़न नहीं है।",
+     "images": []
+    }
+   ]
+  },
+  {
+   "slug": "kpl-matchday",
+   "sort_order": 440,
+   "accent": "cyan",
+   "published": true,
+   "title_en": "Cold mornings. Two matches. One shared operation.",
+   "title_hi": "ठंडी सुबहें। दो मैच। एक साझा आयोजन।",
+   "subtitle_en": "The distinctive rhythm of the Kasigoda Premier League.",
+   "subtitle_hi": "कासीगोड़ा प्रीमियर लीग की अपनी अलग लय।",
+   "blocks": [
+    {
+     "kind": "gallery",
+     "heading_en": "",
+     "heading_hi": "",
+     "body_en": "",
+     "body_hi": "",
+     "images": [
+      {
+       "src": "/about/p10_i01.jpg",
+       "cap_en": "Season 5 winners",
+       "cap_hi": "सीज़न 5 विजेता"
+      },
+      {
+       "src": "/about/p29_i01.jpg",
+       "cap_en": "Community team",
+       "cap_hi": "समुदाय की टीम"
+      },
+      {
+       "src": "/about/p30_i01.jpg",
+       "cap_en": "Team moment",
+       "cap_hi": "टीम का पल"
+      }
+     ]
+    },
+    {
+     "kind": "text",
+     "heading_en": "Matchday playbook",
+     "heading_hi": "मैचडे की रूपरेखा",
+     "body_en": "KPL typically begins around 25 December, when holidays make it easier for players to take part. The auction is held first; tournament play usually begins two days later. The familiar match start is around 6:00 AM, often in very cold winter weather, with players wearing jackets and sweaters.\n\nTwo matches are commonly scheduled per day. A bonfire may be used on cold mornings. Teams are expected to arrive on time; a late or absent team may forfeit the match and the opponent can receive the points.",
+     "body_hi": "केपीएल आमतौर पर लगभग 25 दिसंबर से शुरू होता है, जब छुट्टियों की वजह से खिलाड़ियों के लिए हिस्सा लेना आसान होता है। पहले नीलामी होती है; खेल आमतौर पर दो दिन बाद शुरू होता है। जानी-पहचानी मैच शुरुआत लगभग सुबह 6:00 बजे की है, अक्सर बहुत ठंडे मौसम में, जब खिलाड़ी जैकेट और स्वेटर पहने होते हैं।\n\nआम तौर पर रोज़ दो मैच तय होते हैं। ठंडी सुबहों में अलाव जलाया जा सकता है। टीमों से समय पर पहुँचने की उम्मीद होती है; देर से आने या न आने वाली टीम मैच हार सकती है और विरोधी टीम को अंक मिल सकते हैं।",
+     "images": []
+    },
+    {
+     "kind": "text",
+     "heading_en": "Shared match management",
+     "heading_hi": "साझा मैच प्रबंधन",
+     "body_en": "The team not playing takes on the management role: umpiring, scoring, boundary observation, water, equipment and other match support.\n\nTeams bring their own match ball. The mobile scoring app records the game. These shared duties are part of the league’s community-run format.",
+     "body_hi": "जो टीम नहीं खेल रही होती वह प्रबंधन की भूमिका निभाती है: अंपायरिंग, स्कोरिंग, बाउंड्री पर नज़र, पानी, उपकरण और मैच की अन्य मदद।\n\nटीमें अपनी मैच की गेंद लाती हैं। मोबाइल स्कोरिंग ऐप खेल दर्ज करता है। ये साझा ज़िम्मेदारियाँ लीग के समुदाय-संचालित स्वरूप का हिस्सा हैं।",
+     "images": []
+    }
+   ]
+  },
+  {
+   "slug": "kpl-archive",
+   "sort_order": 450,
+   "accent": "gold",
+   "published": true,
+   "title_en": "Champions, awards and photographs.",
+   "title_hi": "चैंपियन, पुरस्कार और तस्वीरें।",
+   "subtitle_en": "Original tournament images supplied by the Ground Zero archive.",
+   "subtitle_hi": "ग्राउंड ज़ीरो संग्रह से मिली असली टूर्नामेंट तस्वीरें।",
+   "blocks": [
+    {
+     "kind": "gallery",
+     "heading_en": "",
+     "heading_hi": "",
+     "body_en": "",
+     "body_hi": "",
+     "images": [
+      {
+       "src": "/about/p09_i02.jpg",
+       "cap_en": "KPL Season 2 winners / Barun team",
+       "cap_hi": "केपीएल सीज़न 2 विजेता / बरुण की टीम"
+      },
+      {
+       "src": "/about/p10_i01.jpg",
+       "cap_en": "KPL Season 5 winners",
+       "cap_hi": "केपीएल सीज़न 5 विजेता"
+      },
+      {
+       "src": "/about/p12_i01.jpg",
+       "cap_en": "Player / award photo",
+       "cap_hi": "खिलाड़ी / पुरस्कार की तस्वीर"
+      }
+     ]
+    },
+    {
+     "kind": "text",
+     "heading_en": "Award categories",
+     "heading_hi": "पुरस्कार श्रेणियाँ",
+     "body_en": "KPL awards are based on match statistics recorded in the scoring app. Categories mentioned by the organisers include Best Batsman and Best Bowler, with other awards varying by season.\n\nThe winning team receives a cheque / cash prize whose amount can change each year. The losing finalist receives a base prize linked to its registration cost, with a small additional amount intended to help provide food for players. The third team does not receive a team prize, although individual award winners from that team can still be recognised.",
+     "body_hi": "केपीएल के पुरस्कार स्कोरिंग ऐप में दर्ज मैच आँकड़ों पर आधारित होते हैं। आयोजकों के बताए वर्गों में सर्वश्रेष्ठ बल्लेबाज़ और सर्वश्रेष्ठ गेंदबाज़ शामिल हैं, और बाकी पुरस्कार हर सीज़न बदलते हैं।\n\nजीतने वाली टीम को चेक / नकद इनाम मिलता है, जिसकी रकम हर साल बदल सकती है। हारने वाले फ़ाइनलिस्ट को उसके रजिस्ट्रेशन खर्च से जुड़ा एक बेस इनाम मिलता है, साथ में खिलाड़ियों के खाने-पीने में मदद के लिए थोड़ी अतिरिक्त रकम। तीसरी टीम को टीम इनाम नहीं मिलता, लेकिन उस टीम के व्यक्तिगत पुरस्कार विजेताओं को फिर भी सम्मानित किया जा सकता है।",
+     "images": []
+    }
+   ]
+  },
+  {
+   "slug": "kpl-beyond",
+   "sort_order": 460,
+   "accent": "orange",
+   "published": true,
+   "title_en": "Players who carry the ground name outside.",
+   "title_hi": "वे खिलाड़ी जो मैदान का नाम बाहर ले जाते हैं।",
+   "subtitle_en": "External tournament participation and recognised individual performances.",
+   "subtitle_hi": "बाहरी टूर्नामेंटों में भागीदारी और पहचाने गए व्यक्तिगत प्रदर्शन।",
+   "blocks": [
+    {
+     "kind": "gallery",
+     "heading_en": "",
+     "heading_hi": "",
+     "body_en": "",
+     "body_hi": "",
+     "images": [
+      {
+       "src": "/about/p06_i01.jpg",
+       "cap_en": "Medals / trophy",
+       "cap_hi": "पदक / ट्रॉफी"
+      },
+      {
+       "src": "/about/p15_i01.jpg",
+       "cap_en": "Trophy moment",
+       "cap_hi": "ट्रॉफी का पल"
+      }
+     ]
+    },
+    {
+     "kind": "text",
+     "heading_en": "Barun Kumar - SPL",
+     "heading_hi": "बरुण कुमार - एसपीएल",
+     "body_en": "Barun has played in the Silli Premier League (SPL) at Hindalco. He has won the tournament once and was named Best All-Rounder for the winning team. The team reportedly won all of its matches that season; Barun’s wicket-taking bowling was a major part of the performance.\n\nHe has also participated in many tournaments around Silli and other nearby areas since his younger playing days.",
+     "body_hi": "बरुण सिल्ली प्रीमियर लीग (एसपीएल) में हिंडाल्को में खेल चुके हैं। उन्होंने एक बार टूर्नामेंट जीता है और विजेता टीम के लिए सर्वश्रेष्ठ ऑल-राउंडर चुने गए। बताया जाता है कि टीम ने उस सीज़न अपने सारे मैच जीते; बरुण की विकेट लेने वाली गेंदबाज़ी उस प्रदर्शन का बड़ा हिस्सा थी।\n\nवे अपने जवानी के दिनों से सिल्ली और आसपास के इलाकों के कई टूर्नामेंटों में भी खेल चुके हैं।",
+     "images": []
+    },
+    {
+     "kind": "text",
+     "heading_en": "MSPL 2026",
+     "heading_hi": "एमएसपीएल 2026",
+     "body_en": "At the Double Story Ground MSPL tournament in November 2026, Barun captained a team that won the tournament. He received two Man of the Match awards and the Best Bowler award.\n\nOther players mentioned in outside tournaments include Chutu, Rizwan, Vishnu and MD Suhaib.",
+     "body_hi": "नवंबर 2026 में डबल स्टोरी ग्राउंड के एमएसपीएल टूर्नामेंट में बरुण ने एक टीम की कप्तानी की जिसने टूर्नामेंट जीता। उन्हें दो मैन ऑफ़ द मैच पुरस्कार और सर्वश्रेष्ठ गेंदबाज़ का पुरस्कार मिला।\n\nबाहरी टूर्नामेंटों में जिन अन्य खिलाड़ियों का ज़िक्र आता है उनमें चुटू, रिज़वान, विष्णु और एमडी सुहैब शामिल हैं।",
+     "images": []
+    }
+   ]
+  },
+  {
+   "slug": "kpl-award-artwork",
+   "sort_order": 470,
+   "accent": "orange",
+   "published": false,
+   "title_en": "Award artwork (to be verified)",
+   "title_hi": "पुरस्कार आर्टवर्क (पुष्टि बाकी)",
+   "subtitle_en": "This graphic needs its season and date confirmed before it is shown publicly.",
+   "subtitle_hi": "इस ग्राफ़िक को सार्वजनिक करने से पहले इसका सीज़न और तारीख़ पक्की करनी है।",
+   "blocks": [
+    {
+     "kind": "gallery",
+     "heading_en": "",
+     "heading_hi": "",
+     "body_en": "",
+     "body_hi": "",
+     "images": [
+      {
+       "src": "/about/p11_i01.jpg",
+       "cap_en": "Award artwork / verify",
+       "cap_hi": "पुरस्कार आर्टवर्क / पुष्टि करें"
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "heading_en": "Review",
+     "heading_hi": "जाँच",
+     "body_en": "The artwork states “KPL Season 6”, Barun, Rs 3,000 and 18 Jan 2026. This conflicts with the current history for Season 5 ending 28 Jan 2026. Confirm its season and date before public use.",
+     "body_hi": "आर्टवर्क पर “केपीएल सीज़न 6”, बरुण, 3,000 रुपये और 18 जनवरी 2026 लिखा है। यह मौजूदा इतिहास से मेल नहीं खाता, जिसमें सीज़न 5 28 जनवरी 2026 को खत्म हुआ। सार्वजनिक उपयोग से पहले इसका सीज़न और तारीख़ पक्की करें।",
+     "images": []
+    }
+   ]
+  }
+ ]
+}
