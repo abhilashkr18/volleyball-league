@@ -1,0 +1,166 @@
+{
+ "tab": "cricket",
+ "pages": [
+  {
+   "slug": "cricket-daily",
+   "sort_order": 300,
+   "accent": "lime",
+   "published": true,
+   "title_en": "The sport that started it all.",
+   "title_hi": "वह खेल जिसने सब शुरू किया।",
+   "subtitle_en": "Cricket has remained the central thread of the Kasigoda Ground story since around 2005-06.",
+   "subtitle_hi": "क्रिकेट लगभग 2005-06 से कासीगोड़ा ग्राउंड की कहानी की केंद्रीय डोर रहा है।",
+   "blocks": [
+    {
+     "kind": "gallery",
+     "heading_en": "",
+     "heading_hi": "",
+     "body_en": "",
+     "body_hi": "",
+     "images": [
+      {
+       "src": "/about/p07_i01.jpg",
+       "cap_en": "Local cricket",
+       "cap_hi": "स्थानीय क्रिकेट"
+      },
+      {
+       "src": "/about/p08_i01.jpg",
+       "cap_en": "Players at the pitch",
+       "cap_hi": "पिच पर खिलाड़ी"
+      },
+      {
+       "src": "/about/p09_i02.jpg",
+       "cap_en": "Team / tournament",
+       "cap_hi": "टीम / टूर्नामेंट"
+      }
+     ]
+    },
+    {
+     "kind": "text",
+     "heading_en": "The daily game",
+     "heading_hi": "रोज़ का खेल",
+     "body_en": "Players arrive at the ground and two captains are chosen. They take turns selecting players until both teams are formed. Regular local games are generally six overs per side, with two matches often played in the evening.\n\nThe first-match winner gets first batting in the next match. Established bowlers usually bowl, while stronger batsmen often take earlier batting positions. New bowlers still get opportunities to learn and build confidence.",
+     "body_hi": "खिलाड़ी मैदान पर पहुँचते हैं और दो कप्तान चुने जाते हैं। वे बारी-बारी से खिलाड़ी चुनते हैं जब तक दोनों टीमें न बन जाएँ। आम स्थानीय खेल आमतौर पर हर तरफ़ छह ओवर का होता है, और शाम को अक्सर दो मैच खेले जाते हैं।\n\nपहला मैच जीतने वाली टीम अगले मैच में पहले बल्लेबाज़ी करती है। अनुभवी गेंदबाज़ आमतौर पर गेंदबाज़ी करते हैं, जबकि मज़बूत बल्लेबाज़ अक्सर शुरुआती क्रम में खेलते हैं। नए गेंदबाज़ों को भी सीखने और आत्मविश्वास बनाने के मौके मिलते हैं।",
+     "images": []
+    },
+    {
+     "kind": "stats",
+     "heading_en": "Sunday matchdays",
+     "heading_hi": "रविवार के मैच",
+     "body_en": "09:00 AM | Matches begin\n3:00-4:00 PM | Break\n4:30-7:00 PM | Evening session",
+     "body_hi": "सुबह 09:00 | मैच शुरू\nदोपहर 3:00-4:00 | विराम\nशाम 4:30-7:00 | शाम का सत्र",
+     "images": []
+    }
+   ]
+  },
+  {
+   "slug": "rulebook",
+   "sort_order": 310,
+   "accent": "cyan",
+   "published": true,
+   "title_en": "A local boundary rule with its own identity.",
+   "title_hi": "अपनी पहचान वाला एक स्थानीय बाउंड्री नियम।",
+   "subtitle_en": "Illustrative explanation based on the playing rule described by Ground Zero members.",
+   "subtitle_hi": "ग्राउंड ज़ीरो के सदस्यों द्वारा बताए गए खेल नियम पर आधारित समझाने वाला चित्रण।",
+   "blocks": [
+    {
+     "kind": "steps",
+     "heading_en": "How it works",
+     "heading_hi": "यह कैसे काम करता है",
+     "body_en": "Designated off-side field | A direct ball landing inside the separately marked neighbouring field / Hit-Two zone is worth exactly two runs, even if it travels a long distance.\nGround Zero boundary | A direct hit beyond that neighbouring field and into the Ground Zero boundary area is counted as six.\nOther boundaries | Leg side is relatively larger and straight is medium-distance. The off-side adjacent field is the designated Hit-Two zone; the diagram is illustrative, not measured.",
+     "body_hi": "तय ऑफ़-साइड मैदान | अलग से चिह्नित पड़ोसी मैदान / हिट-टू ज़ोन के भीतर सीधी गिरने वाली गेंद ठीक दो रन की गिनी जाती है, चाहे वह कितनी भी दूर जाए।\nग्राउंड ज़ीरो बाउंड्री | उस पड़ोसी मैदान से आगे ग्राउंड ज़ीरो बाउंड्री वाले इलाके में सीधी जाने वाली हिट छह गिनी जाती है।\nअन्य बाउंड्री | लेग साइड अपेक्षाकृत बड़ी है और सीधी दिशा मध्यम दूरी की है। ऑफ़-साइड से लगा मैदान ही तय हिट-टू ज़ोन है; चित्र समझाने के लिए है, नापा हुआ नहीं।",
+     "images": []
+    },
+    {
+     "kind": "note",
+     "heading_en": "Editorial note",
+     "heading_hi": "संपादकीय टिप्पणी",
+     "body_en": "The diagram is a conceptual illustration, not a measured field survey.",
+     "body_hi": "यह चित्र एक अवधारणात्मक चित्रण है, नापा हुआ मैदान-सर्वे नहीं।",
+     "images": []
+    }
+   ]
+  },
+  {
+   "slug": "team-muri",
+   "sort_order": 320,
+   "accent": "orange",
+   "published": true,
+   "title_en": "A name that carried the ground beyond its boundary.",
+   "title_hi": "एक नाम जो मैदान को उसकी सीमा से बाहर ले गया।",
+   "subtitle_en": "The older cricket combination became known locally as Team Muri.",
+   "subtitle_hi": "पुराना क्रिकेट संयोजन स्थानीय स्तर पर टीम मुरी के नाम से जाना जाने लगा।",
+   "blocks": [
+    {
+     "kind": "text",
+     "heading_en": "A feared local combination.",
+     "heading_hi": "एक दबदबे वाला स्थानीय संयोजन।",
+     "body_en": "As players continued to meet and compete, a strong team developed from the regular group. The team became known as Team Muri and represented the ground in outside matches and tournaments.\n\nThe senior generation included players such as Naveen, Suhaib, Barun, Samser, Raj (Chutu), Akash, Kalu, Rabul, Firoz and others. Not every early member played every outside match, but the Team Muri name became a marker of the ground’s earlier competitive identity.\n\nAs senior players gradually stepped back, subsequent generations began carrying the identity forward in their own combinations.",
+     "body_hi": "जैसे-जैसे खिलाड़ी मिलते और मुकाबला करते रहे, नियमित समूह से एक मज़बूत टीम बन गई। यह टीम टीम मुरी के नाम से जानी गई और बाहरी मैचों व टूर्नामेंटों में मैदान का प्रतिनिधित्व करती रही।\n\nसीनियर पीढ़ी में नवीन, सुहैब, बरुण, शमशेर, राज (चुटू), आकाश, कालू, राबुल, फ़िरोज़ और अन्य खिलाड़ी शामिल थे। हर शुरुआती सदस्य हर बाहरी मैच नहीं खेला, लेकिन टीम मुरी का नाम मैदान की शुरुआती प्रतिस्पर्धी पहचान का निशान बन गया।\n\nजैसे-जैसे सीनियर खिलाड़ी धीरे-धीरे पीछे हटे, बाद की पीढ़ियों ने अपने-अपने संयोजनों में यह पहचान आगे बढ़ाई।",
+     "images": [
+      {
+       "src": "/about/p08_i01.jpg",
+       "cap_en": "Team Muri era",
+       "cap_hi": "टीम मुरी का दौर"
+      }
+     ]
+    },
+    {
+     "kind": "text",
+     "heading_en": "The transition",
+     "heading_hi": "बदलाव",
+     "body_en": "Team Muri is not described as the same fixed active lineup today. Its earlier recognition remains part of the history, while newer players are building Ground Zero Muri’s current sporting identity.",
+     "body_hi": "आज टीम मुरी को वही तय सक्रिय लाइनअप नहीं बताया जाता। इसकी पहले की पहचान इतिहास का हिस्सा बनी हुई है, जबकि नए खिलाड़ी ग्राउंड ज़ीरो मुरी की मौजूदा खेल पहचान बना रहे हैं।",
+     "images": []
+    }
+   ]
+  },
+  {
+   "slug": "outside-challenges",
+   "sort_order": 330,
+   "accent": "orange",
+   "published": true,
+   "title_en": "Outside challenges. Shared contributions. Ground Zero colours.",
+   "title_hi": "बाहरी चुनौतियाँ। साझा योगदान। ग्राउंड ज़ीरो के रंग।",
+   "subtitle_en": "Most outside matches are arranged through direct conversation between the two sides, often on Sundays.",
+   "subtitle_hi": "ज़्यादातर बाहरी मैच दोनों पक्षों की सीधी बातचीत से तय होते हैं, अक्सर रविवार को।",
+   "blocks": [
+    {
+     "kind": "gallery",
+     "heading_en": "",
+     "heading_hi": "",
+     "body_en": "",
+     "body_hi": "",
+     "images": [
+      {
+       "src": "/about/p07_i02.jpg",
+       "cap_en": "Outside match culture",
+       "cap_hi": "बाहरी मैच की संस्कृति"
+      },
+      {
+       "src": "/about/p31_i02.jpg",
+       "cap_en": "Playing at Kasigoda",
+       "cap_hi": "कासीगोड़ा में खेल"
+      }
+     ]
+    },
+    {
+     "kind": "text",
+     "heading_en": "How a challenge match is arranged",
+     "heading_hi": "चैलेंज मैच कैसे तय होता है",
+     "body_en": "Teams speak to one another and agree a match. Visiting teams usually come to Kasigoda, although Ground Zero players sometimes travel to the other ground. The most common outside-match day is Sunday, when more players are free.\n\nCash matches are generally six or eight overs per side; sometimes they go to ten overs. The visiting side often suggests the amount. Ground Zero players collect contributions among themselves, and even non-playing members may contribute. The winning side receives the agreed amount.",
+     "body_hi": "टीमें आपस में बात करके मैच तय करती हैं। आमतौर पर बाहरी टीमें कासीगोड़ा आती हैं, हालाँकि ग्राउंड ज़ीरो के खिलाड़ी कभी-कभी दूसरे मैदान पर भी जाते हैं। बाहरी मैच का सबसे आम दिन रविवार है, जब ज़्यादा खिलाड़ी खाली होते हैं।\n\nकैश मैच आमतौर पर हर तरफ़ छह या आठ ओवर के होते हैं; कभी-कभी दस ओवर तक भी जाते हैं। रकम अक्सर आने वाली टीम सुझाती है। ग्राउंड ज़ीरो के खिलाड़ी आपस में योगदान जुटाते हैं, और न खेलने वाले सदस्य भी योगदान दे सकते हैं। जीतने वाली टीम को तय रकम मिलती है।",
+     "images": []
+    },
+    {
+     "kind": "text",
+     "heading_en": "Prominent combinations",
+     "heading_hi": "प्रमुख संयोजन",
+     "body_en": "Earlier outside-match names: Naveen, Samser, MD Suhaib, Barun, Chutu and Vishnu.\n\nA current prominent combination mentioned by the community: Barun, Chutu, AD, Sarfaraz, Rehan, MD Suhaib and Golu.\n\nNaveen has played a major role in arranging these matches and contributing towards match stakes. Some outside games have also seen disputed decisions, tensions and cancellations; fair play and respect for officials remain the ground’s standard.",
+     "body_hi": "पहले के बाहरी मैचों के नाम: नवीन, शमशेर, एमडी सुहैब, बरुण, चुटू और विष्णु।\n\nसमुदाय द्वारा बताया गया मौजूदा प्रमुख संयोजन: बरुण, चुटू, एडी, सरफ़राज़, रेहान, एमडी सुहैब और गोलू।\n\nइन मैचों को तय करने और मैच की रकम में योगदान देने में नवीन की बड़ी भूमिका रही है। कुछ बाहरी मैचों में विवादित फ़ैसले, तनाव और मैच रद्द होने की घटनाएँ भी हुई हैं; निष्पक्ष खेल और अंपायरों का सम्मान मैदान का मानक बना हुआ है।",
+     "images": []
+    }
+   ]
+  }
+ ]
+}
