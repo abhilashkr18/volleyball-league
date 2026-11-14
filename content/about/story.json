@@ -1,0 +1,202 @@
+{
+ "tab": "story",
+ "pages": [
+  {
+   "slug": "overview",
+   "sort_order": 100,
+   "accent": "lime",
+   "published": true,
+   "title_en": "Ground Zero Muri",
+   "title_hi": "ग्राउंड ज़ीरो मुरी",
+   "subtitle_en": "The community behind the game",
+   "subtitle_hi": "खेल के पीछे का समुदाय",
+   "blocks": [
+    {
+     "kind": "text",
+     "heading_en": "Kasigoda / Muri / Jharkhand",
+     "heading_hi": "कासीगोड़ा / मुरी / झारखंड",
+     "body_en": "One ground. Many sports. Generations of players. A story that began with cricket and continues through football, volleyball, badminton and the people who keep coming back.",
+     "body_hi": "एक मैदान। कई खेल। खिलाड़ियों की पीढ़ियाँ। एक कहानी जो क्रिकेट से शुरू हुई और फुटबॉल, वॉलीबॉल, बैडमिंटन और उन लोगों के साथ आगे बढ़ रही है जो बार-बार लौटकर आते हैं।",
+     "images": [
+      {
+       "src": "/about/p01_i02.jpg",
+       "cap_en": "The ground",
+       "cap_hi": "मैदान"
+      }
+     ]
+    },
+    {
+     "kind": "stats",
+     "heading_en": "",
+     "heading_hi": "",
+     "body_en": "2005-06 | Cricket roots\n4 | Sports\nKPL | Annual league\nAll ages | Community",
+     "body_hi": "2005-06 | क्रिकेट की जड़ें\n4 | खेल\nकेपीएल | सालाना लीग\nहर उम्र | समुदाय",
+     "images": []
+    }
+   ]
+  },
+  {
+   "slug": "introduction",
+   "sort_order": 110,
+   "accent": "lime",
+   "published": true,
+   "title_en": "More than a place to play.",
+   "title_hi": "खेलने की जगह से कहीं बढ़कर।",
+   "subtitle_en": "A community-led sports story rooted in Kasigoda, Muri.",
+   "subtitle_hi": "मुरी के कासीगोड़ा में जमी एक समुदाय-संचालित खेल कहानी।",
+   "blocks": [
+    {
+     "kind": "text",
+     "heading_en": "Built by players. Kept alive by community.",
+     "heading_hi": "खिलाड़ियों ने बनाया। समुदाय ने ज़िंदा रखा।",
+     "body_en": "Ground Zero Muri is the modern identity of the long-running Kasigoda Ground sporting community in Muri, Jharkhand. The story begins around 2005-06, when local senior players began using a large, flat open ground because suitable playing spaces were limited in the area. It gave the neighbourhood a place to gather, compete and grow.\n\nOver time, the ground became a meeting point for generations: early cricket regulars, the Team Muri era, visiting players from nearby places, football players during the monsoon, and newer volleyball and badminton groups.",
+     "body_hi": "ग्राउंड ज़ीरो मुरी, झारखंड के मुरी में लंबे समय से चल रहे कासीगोड़ा ग्राउंड खेल समुदाय की नई पहचान है। कहानी लगभग 2005-06 से शुरू होती है, जब स्थानीय सीनियर खिलाड़ियों ने एक बड़े, समतल खुले मैदान में खेलना शुरू किया क्योंकि इलाके में खेलने की सही जगहें कम थीं। इस मैदान ने मोहल्ले को इकट्ठा होने, मुकाबला करने और आगे बढ़ने की जगह दी।\n\nसमय के साथ यह मैदान कई पीढ़ियों का मिलन-स्थल बन गया: शुरुआती क्रिकेट के नियमित खिलाड़ी, टीम मुरी का दौर, आसपास की जगहों से आने वाले मेहमान खिलाड़ी, बरसात में फुटबॉल खेलने वाले, और नए वॉलीबॉल व बैडमिंटन समूह।",
+     "images": [
+      {
+       "src": "/about/p01_i03.jpg",
+       "cap_en": "The home ground",
+       "cap_hi": "अपना मैदान"
+      }
+     ]
+    },
+    {
+     "kind": "quote",
+     "heading_en": "",
+     "heading_hi": "",
+     "body_en": "One ground.\nEvery generation.\nEndless possibilities.",
+     "body_hi": "एक मैदान।\nहर पीढ़ी।\nअनंत संभावनाएँ।",
+     "images": []
+    }
+   ]
+  },
+  {
+   "slug": "the-place",
+   "sort_order": 120,
+   "accent": "cyan",
+   "published": true,
+   "title_en": "Kasigoda Ground. Ground Zero Muri.",
+   "title_hi": "कासीगोड़ा ग्राउंड। ग्राउंड ज़ीरो मुरी।",
+   "subtitle_en": "The original local name is Kasigoda Ground; Ground Zero Muri is its newer sporting identity.",
+   "subtitle_hi": "मूल स्थानीय नाम कासीगोड़ा ग्राउंड है; ग्राउंड ज़ीरो मुरी इसकी नई खेल पहचान है।",
+   "blocks": [
+    {
+     "kind": "gallery",
+     "heading_en": "",
+     "heading_hi": "",
+     "body_en": "",
+     "body_hi": "",
+     "images": [
+      {
+       "src": "/about/p01_i01.jpg",
+       "cap_en": "Open landscape",
+       "cap_hi": "खुला नज़ारा"
+      },
+      {
+       "src": "/about/p01_i02.jpg",
+       "cap_en": "Green field",
+       "cap_hi": "हरा मैदान"
+      },
+      {
+       "src": "/about/p02_i01.jpg",
+       "cap_en": "Distant industrial view",
+       "cap_hi": "दूर का औद्योगिक दृश्य"
+      },
+      {
+       "src": "/about/p02_i02.jpg",
+       "cap_en": "Playing area",
+       "cap_hi": "खेलने का मैदान"
+      }
+     ]
+    },
+    {
+     "kind": "text",
+     "heading_en": "Where it sits",
+     "heading_hi": "यह कहाँ है",
+     "body_en": "The ground is located behind Niche Tola Society in Muri, near the Bada Muri Hanuman Mandir. Society homes are close to the playing area, which has historically made it easy for local players to reach the ground.\n\nThe setting is remembered for its open, flat playing surface, surrounding trees, paddy fields and views across the wider landscape. Players describe views towards Tungri Park, the railway station and trains passing through, as well as the illuminated Hindalco factory at night.\n\nThe ground is valued for space and usability: multiple pitches can be laid out, and more than one sport can sometimes use the wider area at the same time.",
+     "body_hi": "यह मैदान मुरी में नीचे टोला सोसाइटी के पीछे, बड़ा मुरी हनुमान मंदिर के पास है। सोसाइटी के घर खेल के मैदान के पास हैं, इसलिए स्थानीय खिलाड़ियों के लिए यहाँ पहुँचना हमेशा आसान रहा है।\n\nइस जगह को इसकी खुली, समतल ज़मीन, आसपास के पेड़ों, धान के खेतों और दूर तक फैले नज़ारों के लिए याद किया जाता है। खिलाड़ी टुंगरी पार्क, रेलवे स्टेशन और वहाँ से गुज़रती ट्रेनों के नज़ारे बताते हैं, और रात में जगमगाती हिंडाल्को फैक्ट्री का भी।\n\nमैदान की कद्र उसकी जगह और उपयोगिता के लिए है: यहाँ कई पिच बनाई जा सकती हैं, और कभी-कभी एक से ज़्यादा खेल एक ही समय में बड़े इलाके का उपयोग कर सकते हैं।",
+     "images": []
+    }
+   ]
+  },
+  {
+   "slug": "home-field",
+   "sort_order": 130,
+   "accent": "lime",
+   "published": true,
+   "title_en": "A flat, open canvas for sport.",
+   "title_hi": "खेल के लिए एक समतल, खुला कैनवास।",
+   "subtitle_en": "Ground details as described by the players who use it.",
+   "subtitle_hi": "मैदान की जानकारी, उन्हीं खिलाड़ियों के शब्दों में जो इसे इस्तेमाल करते हैं।",
+   "blocks": [
+    {
+     "kind": "gallery",
+     "heading_en": "",
+     "heading_hi": "",
+     "body_en": "",
+     "body_hi": "",
+     "images": [
+      {
+       "src": "/about/p02_i02.jpg",
+       "cap_en": "The playing surface",
+       "cap_hi": "खेल की सतह"
+      },
+      {
+       "src": "/about/p01_i03.jpg",
+       "cap_en": "Surrounding fields",
+       "cap_hi": "आसपास के खेत"
+      },
+      {
+       "src": "/about/p02_i01.jpg",
+       "cap_en": "Local views",
+       "cap_hi": "स्थानीय नज़ारे"
+      }
+     ]
+    },
+    {
+     "kind": "cards",
+     "heading_en": "",
+     "heading_hi": "",
+     "body_en": "Space | Large, relatively flat playing area.\nPitches | The pitch surface has been adjusted over the years.\nMulti-sport | Room for multiple pitches and, at times, more than one sport.\nShade | Trees around the ground provide shaded spots.\nWater | A nearby well is used for drinking water.\nAccess | Society homes sit close to the ground.",
+     "body_hi": "जगह | बड़ा, अपेक्षाकृत समतल खेल मैदान।\nपिच | पिच की सतह को सालों में ठीक-ठाक किया गया है।\nकई खेल | कई पिचों के लिए जगह और कभी-कभी एक से ज़्यादा खेल।\nछाया | मैदान के आसपास के पेड़ छाँव देते हैं।\nपानी | पीने के पानी के लिए पास के कुएँ का उपयोग होता है।\nपहुँच | सोसाइटी के घर मैदान के पास हैं।",
+     "images": []
+    },
+    {
+     "kind": "text",
+     "heading_en": "A distinct advantage",
+     "heading_hi": "एक खास फ़ायदा",
+     "body_en": "Nearby playing areas are often described as uneven agricultural fields. Kasigoda is valued for being broader and flatter, making regular play and pitch arrangements easier.\n\nThe ground is not described as a formal, privately managed sports facility. It is an open community playing place looked after by regular users, with players from the society and nearby villages or localities joining when matches are arranged.",
+     "body_hi": "आसपास के खेल के मैदानों को अक्सर ऊबड़-खाबड़ खेत बताया जाता है। कासीगोड़ा की कद्र इसलिए है कि यह ज़्यादा चौड़ा और समतल है, जिससे रोज़ का खेल और पिच की व्यवस्था आसान हो जाती है।\n\nइस मैदान को कोई औपचारिक, निजी प्रबंधन वाली खेल सुविधा नहीं बताया जाता। यह एक खुला सामुदायिक खेल स्थल है जिसकी देखभाल नियमित खिलाड़ी करते हैं, और मैच तय होने पर सोसाइटी तथा आसपास के गाँवों या मोहल्लों के खिलाड़ी भी जुड़ते हैं।",
+     "images": []
+    }
+   ]
+  },
+  {
+   "slug": "timeline",
+   "sort_order": 140,
+   "accent": "gold",
+   "published": true,
+   "title_en": "A legacy built in seasons.",
+   "title_hi": "मौसमों में बनी एक विरासत।",
+   "subtitle_en": "Dates are approximate where the community history has not been pinned to a single exact day.",
+   "subtitle_hi": "जहाँ समुदाय के इतिहास में कोई एक पक्की तारीख़ तय नहीं है, वहाँ तारीख़ें लगभग की हैं।",
+   "blocks": [
+    {
+     "kind": "timeline",
+     "heading_en": "",
+     "heading_hi": "",
+     "body_en": "2005-06 | Cricket begins | Senior local players begin playing at Kasigoda.\n2016-17 | The finisher era | Don becomes known for late-order six-hitting.\n2018 | Casual football | Football is played informally alongside cricket.\nAround 2020 | Football grows | During the COVID period, football activity expands as cricket reduces.\nAround 2023 | Volleyball + badminton | Volleyball takes shape in the off-season; badminton follows as a seasonal activity.\n2025 | Football pause | Organised football activity faces a setback after an on-field dispute.\n2025-26 | KPL Season 5 | The season begins 25 Dec 2025 and concludes 28 Jan 2026.",
+     "body_hi": "2005-06 | क्रिकेट की शुरुआत | कासीगोड़ा में स्थानीय सीनियर खिलाड़ियों ने खेलना शुरू किया।\n2016-17 | फिनिशर का दौर | डॉन आख़िरी क्रम में छक्के मारने के लिए जाने जाने लगे।\n2018 | कैज़ुअल फुटबॉल | क्रिकेट के साथ-साथ फुटबॉल अनौपचारिक रूप से खेला जाने लगा।\nलगभग 2020 | फुटबॉल का बढ़ना | कोविड के दौरान क्रिकेट घटा और फुटबॉल की गतिविधि बढ़ी।\nलगभग 2023 | वॉलीबॉल + बैडमिंटन | ऑफ-सीज़न में वॉलीबॉल शुरू हुआ; बैडमिंटन मौसमी खेल के रूप में जुड़ा।\n2025 | फुटबॉल पर रोक | मैदान पर हुए एक विवाद के बाद संगठित फुटबॉल को झटका लगा।\n2025-26 | केपीएल सीज़न 5 | सीज़न 25 दिसंबर 2025 को शुरू हुआ और 28 जनवरी 2026 को खत्म हुआ।",
+     "images": []
+    },
+    {
+     "kind": "note",
+     "heading_en": "Reading the timeline",
+     "heading_hi": "समयरेखा कैसे पढ़ें",
+     "body_en": "Cricket is described as continuous from its beginning, with no gap year. Football existed casually around 2018, then became much more active around the COVID period. Volleyball is described as beginning around 2023 (one earlier recollection said 2022; to be confirmed).",
+     "body_hi": "क्रिकेट शुरुआत से लगातार चलता बताया जाता है, बीच में कोई साल खाली नहीं गया। फुटबॉल लगभग 2018 में कैज़ुअल रूप से खेला जाता था, फिर कोविड के आसपास बहुत ज़्यादा सक्रिय हुआ। वॉलीबॉल की शुरुआत लगभग 2023 बताई जाती है (एक पुरानी याद में 2022 कहा गया था; पुष्टि बाकी है)।",
+     "images": []
+    }
+   ]
+  }
+ ]
+}
