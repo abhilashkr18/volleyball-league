@@ -1,0 +1,145 @@
+{
+ "tab": "people",
+ "pages": [
+  {
+   "slug": "founders",
+   "sort_order": 200,
+   "accent": "gold",
+   "published": true,
+   "title_en": "The first generation. The first innings.",
+   "title_hi": "पहली पीढ़ी। पहली पारी।",
+   "subtitle_en": "The earliest remembered names are preserved here as a living archive, not a closed final list.",
+   "subtitle_hi": "सबसे पुराने याद किए गए नाम यहाँ एक जीवित संग्रह के रूप में सहेजे गए हैं, कोई बंद अंतिम सूची नहीं।",
+   "blocks": [
+    {
+     "kind": "people",
+     "heading_en": "",
+     "heading_hi": "",
+     "body_en": "/about/p03_i01.jpg | Naveen Kumar |  | Founding-generation player; long-time attacking opener and match organiser.\n/about/p04_i01.jpg | MD Suhaib |  | Founding-generation player; later became owner of one KPL team from Season 3.\n/about/p05_i01.jpg | Samsher (Arvind) |  | Name retained as supplied in the photo archive.\n/about/p14_i01.jpg | Barun Kumar |  | Founding-generation player; senior competitor, captain and youth football coach.",
+     "body_hi": "/about/p03_i01.jpg | नवीन कुमार |  | संस्थापक पीढ़ी के खिलाड़ी; लंबे समय तक आक्रामक ओपनर और मैच आयोजक।\n/about/p04_i01.jpg | एमडी सुहैब |  | संस्थापक पीढ़ी के खिलाड़ी; बाद में सीज़न 3 से एक केपीएल टीम के मालिक बने।\n/about/p05_i01.jpg | शमशेर (अरविंद) |  | नाम वैसा ही रखा गया है जैसा फ़ोटो संग्रह में मिला।\n/about/p14_i01.jpg | बरुण कुमार |  | संस्थापक पीढ़ी के खिलाड़ी; सीनियर प्रतियोगी, कप्तान और युवा फुटबॉल कोच।",
+     "images": []
+    },
+    {
+     "kind": "text",
+     "heading_en": "Other founding names remembered",
+     "heading_hi": "याद किए गए अन्य संस्थापक नाम",
+     "body_en": "Arbind Mahili • MD Firoz • and additional early players whose names will be added as they are confirmed.\n\nThe ground did not begin as a formal academy or registered sports club. It grew from a group of senior players who wanted a large, suitable place to play cricket. The founding story belongs to the people who first made the ground a regular meeting place.",
+     "body_hi": "अरबिंद महिली • एमडी फ़िरोज़ • और शुरुआती दौर के अन्य खिलाड़ी, जिनके नाम पुष्टि होते ही जोड़े जाएँगे।\n\nयह मैदान किसी औपचारिक अकादमी या पंजीकृत खेल क्लब के रूप में शुरू नहीं हुआ। यह सीनियर खिलाड़ियों के एक समूह से बढ़ा, जो क्रिकेट खेलने के लिए एक बड़ी, उपयुक्त जगह चाहते थे। संस्थापक कहानी उन्हीं लोगों की है जिन्होंने सबसे पहले इस मैदान को मिलने-जुलने की नियमित जगह बनाया।",
+     "images": []
+    }
+   ]
+  },
+  {
+   "slug": "the-people",
+   "sort_order": 210,
+   "accent": "cyan",
+   "published": true,
+   "title_en": "A community across generations.",
+   "title_hi": "पीढ़ियों में फैला एक समुदाय।",
+   "subtitle_en": "Names remembered so far. Additions and spelling corrections can be made as the archive grows.",
+   "subtitle_hi": "अब तक याद किए गए नाम। संग्रह बढ़ने के साथ नाम जोड़े और वर्तनी सुधारी जा सकती है।",
+   "blocks": [
+    {
+     "kind": "cards",
+     "heading_en": "",
+     "heading_hi": "",
+     "body_en": "Early players / first wave | Naveen Kumar • MD Suhaib • Barun Kumar • Samser • Raj (Chutu) • Akash • Kalu • Rabul • Firoz • Dhuki • Balle • Dhulku • Bikash (RP) • Nikhil • Nayyar\nOutside visitors / regular guests | Tilu • Ajay Mura • Anand • Binod • Chandraprakash • Aman • Other visiting players from nearby places\nNext generations | Vishnu • Don • Rizwan • Vikash (Sai) • Rehan • Dhruv • Sarfaraz • Arman • AD • Golu • Sajid • Fuchi • Manan • Zeeshan • Many more",
+     "body_hi": "शुरुआती खिलाड़ी / पहली लहर | नवीन कुमार • एमडी सुहैब • बरुण कुमार • शमशेर • राज (चुटू) • आकाश • कालू • राबुल • फ़िरोज़ • धुकी • बल्ले • धुल्कु • बिकास (आरपी) • निखिल • एडी का मामा\nबाहर से आने वाले / नियमित मेहमान | टिलू • अजय मुरा • आनंद • बिनोद • अमन • आसपास की जगहों से आने वाले अन्य खिलाड़ी\nअगली पीढ़ियाँ | विष्णु • डॉन • रिज़वान • विकास (साई) • रेहान • ध्रुव • सरफ़राज़ • अरमान • एडी • गोलू • साजिद • फुची • मनन • ज़ीशान • और भी बहुत से",
+     "images": []
+    },
+    {
+     "kind": "text",
+     "heading_en": "",
+     "heading_hi": "",
+     "body_en": "The newer wave includes younger players who have gradually become regular contributors to the ground.",
+     "body_hi": "नई लहर में युवा खिलाड़ी हैं जो धीरे-धीरे मैदान के नियमित योगदानकर्ता बन गए हैं।",
+     "images": []
+    },
+    {
+     "kind": "note",
+     "heading_en": "Archive principle",
+     "heading_hi": "संग्रह का सिद्धांत",
+     "body_en": "No one is left out because a name was not remembered in the first draft. This roster stays open for additions.",
+     "body_hi": "सिर्फ़ इसलिए कोई छूटा नहीं है कि पहले मसौदे में उसका नाम याद नहीं आया। यह सूची नए नामों के लिए खुली है।",
+     "images": []
+    }
+   ]
+  },
+  {
+   "slug": "player-stories",
+   "sort_order": 220,
+   "accent": "gold",
+   "published": true,
+   "title_en": "The Sixer King. The Finisher.",
+   "title_hi": "सिक्सर किंग। द फिनिशर।",
+   "subtitle_en": "Two remembered cricket stories from different phases of the Ground Zero timeline.",
+   "subtitle_hi": "ग्राउंड ज़ीरो की समयरेखा के अलग-अलग दौर की दो याद की गई क्रिकेट कहानियाँ।",
+   "blocks": [
+    {
+     "kind": "people",
+     "heading_en": "",
+     "heading_hi": "",
+     "body_en": "/about/p03_i01.jpg | Naveen Kumar | The Sixer King | A founding-generation player and attacking opener, Naveen is remembered for powerful six-hitting and for a signature shot towards third man, guiding the ball with the bat. He has organised many outside matches, contributes to team arrangements and continues to support KPL as a community member, including trophy and cheque presentations.\n/about/p22_i01.jpg | Don | The Finisher | Around 2016-17, Don was the youngest among several senior players such as Barun, Suhaib and Naveen. He often batted late and was initially used at third man. He became known for powerful sixes. In one memorable outside match, his side needed a six from the final ball; Don hit it and won the match. After 2021 he stepped away from cricket for career reasons and focused more on volleyball, where he is now recognised for strong serving.",
+     "body_hi": "/about/p03_i01.jpg | नवीन कुमार | सिक्सर किंग | संस्थापक पीढ़ी के खिलाड़ी और आक्रामक ओपनर नवीन को ज़ोरदार छक्कों और थर्ड मैन की ओर बल्ले से गेंद को गाइड करने वाले अपने खास शॉट के लिए याद किया जाता है। उन्होंने कई बाहरी मैच आयोजित किए हैं, टीम की व्यवस्थाओं में योगदान देते हैं, और समुदाय के सदस्य के रूप में केपीएल का साथ देते हैं, जिसमें ट्रॉफी और चेक देना भी शामिल है।\n/about/p22_i01.jpg | डॉन | द फिनिशर | लगभग 2016-17 में डॉन बरुण, सुहैब और नवीन जैसे कई सीनियर खिलाड़ियों के बीच सबसे छोटे थे। वे अक्सर आख़िर में बल्लेबाज़ी करते थे और शुरू में उन्हें थर्ड मैन पर लगाया जाता था। वे ज़ोरदार छक्कों के लिए जाने जाने लगे। एक यादगार बाहरी मैच में उनकी टीम को आख़िरी गेंद पर छक्का चाहिए था; डॉन ने वह मारा और मैच जिता दिया। 2021 के बाद करियर की वजह से उन्होंने क्रिकेट से दूरी बना ली और वॉलीबॉल पर ज़्यादा ध्यान दिया, जहाँ अब उनकी पहचान ज़ोरदार सर्विस के लिए है।",
+     "images": []
+    },
+    {
+     "kind": "note",
+     "heading_en": "Editorial note",
+     "heading_hi": "संपादकीय टिप्पणी",
+     "body_en": "The “Sixer King” and “The Finisher” are community nicknames / remembered descriptions, not formal awards.",
+     "body_hi": "“सिक्सर किंग” और “द फिनिशर” समुदाय के दिए नाम / याद किए गए वर्णन हैं, औपचारिक पुरस्कार नहीं।",
+     "images": []
+    }
+   ]
+  },
+  {
+   "slug": "spotlights",
+   "sort_order": 230,
+   "accent": "lime",
+   "published": true,
+   "title_en": "The next wave of cricket talent.",
+   "title_hi": "क्रिकेट प्रतिभा की अगली लहर।",
+   "subtitle_en": "Profiles and roles based on the community’s current recollection.",
+   "subtitle_hi": "समुदाय की मौजूदा याददाश्त के आधार पर प्रोफ़ाइल और भूमिकाएँ।",
+   "blocks": [
+    {
+     "kind": "people",
+     "heading_en": "",
+     "heading_hi": "",
+     "body_en": "/about/p26_i01.jpg | AD | Opener • emerging attacking batter | A younger school-age player who became active around 2022. Known for powerful shots and opening batting; senior players have taken him to larger matches and outside tournaments.\n/about/p24_i01.jpg | Sarfaraz | Opening batter | One of the newer-generation players whose batting presence has grown through regular play alongside senior players.\n/about/p25_i01.jpg | Rehan | Opening batter | Recognised among the group of newer-generation players developing through regular cricket and match experience.\n/about/p27_i01.jpg | Dhruv | Batting group | Part of the group of players known for opening batting and steadily increasing match presence.\n/about/p28_i01.jpg | Fuchi | Fast-bowling group | Recognised by the community among the fast-bowling players. Other fast-bowling names include Zeeshan, Vishnu and Golu.\n/about/p19_i01.jpg | Mohan (Geda) | Player archive | Portrait included in the individual-player photo collection.",
+     "body_hi": "/about/p26_i01.jpg | एडी | ओपनर • उभरता आक्रामक बल्लेबाज़ | स्कूल जाने की उम्र का एक युवा खिलाड़ी जो लगभग 2022 में सक्रिय हुआ। ज़ोरदार शॉट और ओपनिंग बल्लेबाज़ी के लिए जाना जाता है; सीनियर खिलाड़ी उसे बड़े मैचों और बाहरी टूर्नामेंटों में ले गए हैं।\n/about/p24_i01.jpg | सरफ़राज़ | ओपनिंग बल्लेबाज़ | नई पीढ़ी के उन खिलाड़ियों में से एक जिनकी बल्लेबाज़ी की मौजूदगी सीनियर खिलाड़ियों के साथ नियमित खेलने से बढ़ी है।\n/about/p25_i01.jpg | रेहान | ओपनिंग बल्लेबाज़ | नई पीढ़ी के उन खिलाड़ियों में पहचान जो नियमित क्रिकेट और मैच के अनुभव से निखर रहे हैं।\n/about/p27_i01.jpg | ध्रुव | बल्लेबाज़ी समूह | ओपनिंग बल्लेबाज़ी और लगातार बढ़ती मैच मौजूदगी के लिए जाने जाने वाले खिलाड़ियों के समूह का हिस्सा।\n/about/p28_i01.jpg | फुची | तेज़ गेंदबाज़ी समूह | समुदाय में तेज़ गेंदबाज़ों के बीच पहचाने जाते हैं। अन्य तेज़ गेंदबाज़ों में ज़ीशान, विष्णु और गोलू के नाम शामिल हैं।\n/about/p19_i01.jpg | मोहन (गेडा) | खिलाड़ी संग्रह | फ़ोटो संग्रह में शामिल पोर्ट्रेट।",
+     "images": []
+    }
+   ]
+  },
+  {
+   "slug": "player-archive",
+   "sort_order": 240,
+   "accent": "cyan",
+   "published": true,
+   "title_en": "The people in the photographs.",
+   "title_hi": "तस्वीरों में दिखते लोग।",
+   "subtitle_en": "Original portraits supplied for the Ground Zero individual-player archive.",
+   "subtitle_hi": "ग्राउंड ज़ीरो के व्यक्तिगत खिलाड़ी संग्रह के लिए मिले असली पोर्ट्रेट।",
+   "blocks": [
+    {
+     "kind": "people",
+     "heading_en": "",
+     "heading_hi": "",
+     "body_en": "/about/p18_i01.jpg | Deepak | Old member | \n/about/p19_i01.jpg | Mohan (Geda) | Player archive | \n/about/p20_i01.jpg | Mohit (Tillu) | Player archive | \n/about/p21_i01.jpg | Sayyad (Aariz) | Player archive | \n/about/p22_i01.jpg | Don | The Finisher / volleyball server | \n/about/p23_i01.jpg | Rizwan | Former KPL owner; later player | \n/about/p24_i01.jpg | Sarfaraz | Opening batter | \n/about/p25_i01.jpg | Rehan | Opening batter | \n/about/p26_i01.jpg | AD | Young attacking opener | \n/about/p27_i01.jpg | Dhruv | Batting group | \n/about/p28_i01.jpg | Fuchi | Fast-bowling group | ",
+     "body_hi": "/about/p18_i01.jpg | दीपक | पुराने सदस्य | \n/about/p19_i01.jpg | मोहन (गेडा) | खिलाड़ी संग्रह | \n/about/p20_i01.jpg | मोहित (टिल्लू) | खिलाड़ी संग्रह | \n/about/p21_i01.jpg | सैयद (आरिज़) | खिलाड़ी संग्रह | \n/about/p22_i01.jpg | डॉन | द फिनिशर / वॉलीबॉल सर्वर | \n/about/p23_i01.jpg | रिज़वान | पूर्व केपीएल मालिक; बाद में खिलाड़ी | \n/about/p24_i01.jpg | सरफ़राज़ | ओपनिंग बल्लेबाज़ | \n/about/p25_i01.jpg | रेहान | ओपनिंग बल्लेबाज़ | \n/about/p26_i01.jpg | एडी | युवा आक्रामक ओपनर | \n/about/p27_i01.jpg | ध्रुव | बल्लेबाज़ी समूह | \n/about/p28_i01.jpg | फुची | तेज़ गेंदबाज़ी समूह | ",
+     "images": []
+    },
+    {
+     "kind": "note",
+     "heading_en": "Note",
+     "heading_hi": "ध्यान दें",
+     "body_en": "A portrait in the photo archive does not automatically imply an official playing position or award.",
+     "body_hi": "फ़ोटो संग्रह में किसी का पोर्ट्रेट होने का मतलब यह नहीं कि उसे कोई औपचारिक खेल-स्थिति या पुरस्कार मिला है।",
+     "images": []
+    }
+   ]
+  }
+ ]
+}
