@@ -1,0 +1,125 @@
+{
+ "tab": "football",
+ "pages": [
+  {
+   "slug": "football-golden-era",
+   "sort_order": 500,
+   "accent": "orange",
+   "published": true,
+   "title_en": "A monsoon game with its own golden era.",
+   "title_hi": "बरसात का खेल, जिसका अपना सुनहरा दौर रहा।",
+   "subtitle_en": "Football brought new players, new rivalries and a different rhythm to Kasigoda.",
+   "subtitle_hi": "फुटबॉल कासीगोड़ा में नए खिलाड़ी, नई प्रतिद्वंद्विता और एक अलग लय लेकर आया।",
+   "blocks": [
+    {
+     "kind": "gallery",
+     "heading_en": "",
+     "heading_hi": "",
+     "body_en": "",
+     "body_hi": "",
+     "images": [
+      {
+       "src": "/about/p13_i01.jpg",
+       "cap_en": "Football community",
+       "cap_hi": "फुटबॉल समुदाय"
+      },
+      {
+       "src": "/about/p13_i02.jpg",
+       "cap_en": "Football moment",
+       "cap_hi": "फुटबॉल का पल"
+      },
+      {
+       "src": "/about/p14_i01.jpg",
+       "cap_en": "Barun / football",
+       "cap_hi": "बरुण / फुटबॉल"
+      }
+     ]
+    },
+    {
+     "kind": "text",
+     "heading_en": "How football took root",
+     "heading_hi": "फुटबॉल ने जड़ें कैसे जमाईं",
+     "body_en": "Casual football was already played around 2018. During the COVID period, when cricket activity reduced, players from nearby homes and other groups began using Kasigoda because they did not have a comparable large playing ground. Rainy-season conditions made football especially appealing.\n\nFor around four to five years, the game was especially active during the monsoon, often for about two months. Teams could include 13-15 players a side. There were no permanent teams or formal local football tournament; players formed sides each day, with captains sometimes appointed according to who contributed more money. Evening matches were often competitive, with strong local rivalries. Players who wanted a formal football venue often travelled to Silli Stadium, although the distance made repeated travel difficult for some nearby players.",
+     "body_hi": "कैज़ुअल फुटबॉल लगभग 2018 में ही खेला जा रहा था। कोविड के दौरान, जब क्रिकेट की गतिविधि घटी, आसपास के घरों और दूसरे समूहों के खिलाड़ी कासीगोड़ा का इस्तेमाल करने लगे क्योंकि उनके पास इतना बड़ा मैदान नहीं था। बरसात के मौसम की परिस्थितियों ने फुटबॉल को ख़ास तौर पर आकर्षक बना दिया।\n\nलगभग चार से पाँच साल तक यह खेल बरसात में ख़ास तौर पर सक्रिय रहा, अक्सर लगभग दो महीने तक। एक तरफ़ 13-15 खिलाड़ी तक हो सकते थे। कोई स्थायी टीम या औपचारिक स्थानीय फुटबॉल टूर्नामेंट नहीं था; खिलाड़ी हर दिन टीमें बना लेते थे, और कप्तान कभी-कभी इस आधार पर बनाए जाते थे कि किसने ज़्यादा पैसे दिए। शाम के मैच अक्सर कड़े मुकाबले वाले होते थे, मज़बूत स्थानीय प्रतिद्वंद्विता के साथ। जो खिलाड़ी औपचारिक फुटबॉल मैदान चाहते थे वे अक्सर सिल्ली स्टेडियम जाते थे, हालाँकि दूरी की वजह से आसपास के कुछ खिलाड़ियों के लिए बार-बार जाना मुश्किल था।",
+     "images": []
+    },
+    {
+     "kind": "cards",
+     "heading_en": "",
+     "heading_hi": "",
+     "body_en": "The old football names | Aman • Binod • Master • Barun • Mohit (Tillu) • Lutku • Anand • Chutu • Dhruv • Geda • and others",
+     "body_hi": "पुराने फुटबॉल खिलाड़ी | अमन • बिनोद • मास्टर • बरुण • मोहित (टिल्लू) • लुटकू • आनंद • चुटू • ध्रुव • गेडा • और अन्य",
+     "images": []
+    },
+    {
+     "kind": "note",
+     "heading_en": "The setback",
+     "heading_hi": "झटका",
+     "body_en": "Football activity faced a serious setback in 2025 after an on-field dispute. Goalposts were removed and the regular group matches stopped.",
+     "body_hi": "2025 में मैदान पर हुए एक विवाद के बाद फुटबॉल गतिविधि को गंभीर झटका लगा। गोलपोस्ट हटा दिए गए और नियमित समूह मैच रुक गए।",
+     "images": []
+    }
+   ]
+  },
+  {
+   "slug": "football-next-chapter",
+   "sort_order": 510,
+   "accent": "lime",
+   "published": true,
+   "title_en": "From the golden era to the young trainees.",
+   "title_hi": "सुनहरे दौर से युवा प्रशिक्षुओं तक।",
+   "subtitle_en": "Barun’s coaching has become a bridge between the older players and the next generation.",
+   "subtitle_hi": "बरुण की कोचिंग पुराने खिलाड़ियों और अगली पीढ़ी के बीच पुल बन गई है।",
+   "blocks": [
+    {
+     "kind": "gallery",
+     "heading_en": "",
+     "heading_hi": "",
+     "body_en": "",
+     "body_hi": "",
+     "images": [
+      {
+       "src": "/about/p14_i01.jpg",
+       "cap_en": "Barun / football",
+       "cap_hi": "बरुण / फुटबॉल"
+      },
+      {
+       "src": "/about/p13_i01.jpg",
+       "cap_en": "Community football",
+       "cap_hi": "सामुदायिक फुटबॉल"
+      },
+      {
+       "src": "/about/p17_i01.jpg",
+       "cap_en": "Sports training",
+       "cap_hi": "खेल प्रशिक्षण"
+      }
+     ]
+    },
+    {
+     "kind": "text",
+     "heading_en": "Barun’s training approach",
+     "heading_hi": "बरुण का प्रशिक्षण तरीका",
+     "body_en": "After the regular adult football group paused, Barun began coaching children who were learning the sport. The group has been around 10-15 trainees. Training can include 1-2 km of running, skill drills, practice and a match; approximately one hour of preparation may take place before a game.\n\nTraining and playing moments are sometimes recorded and shared through Instagram Reels. Some older players aged around 15-20 occasionally join in, while the main focus remains on younger trainees.",
+     "body_hi": "नियमित वयस्क फुटबॉल समूह के रुकने के बाद बरुण ने उन बच्चों को कोचिंग देना शुरू किया जो यह खेल सीख रहे थे। समूह में लगभग 10-15 प्रशिक्षु हैं। प्रशिक्षण में 1-2 किलोमीटर की दौड़, स्किल ड्रिल, अभ्यास और एक मैच शामिल हो सकता है; खेल से पहले लगभग एक घंटे की तैयारी हो सकती है।\n\nप्रशिक्षण और खेल के पल कभी-कभी रिकॉर्ड करके इंस्टाग्राम रील्स पर साझा किए जाते हैं। लगभग 15-20 साल के कुछ बड़े खिलाड़ी कभी-कभी साथ आ जाते हैं, जबकि मुख्य ध्यान छोटे प्रशिक्षुओं पर रहता है।",
+     "images": []
+    },
+    {
+     "kind": "cards",
+     "heading_en": "",
+     "heading_hi": "",
+     "body_en": "The next generation | Numaan • Wahid • Premjeet • Joy • Asutosh • Sumit • Dugu • Ved • and others",
+     "body_hi": "अगली पीढ़ी | नुमान • वाहिद • प्रेमजीत • जॉय • आशुतोष • सुमित • दुगु • वेद • और अन्य",
+     "images": []
+    },
+    {
+     "kind": "text",
+     "heading_en": "",
+     "heading_hi": "",
+     "body_en": "The community sees these younger players as an important part of football’s future at Ground Zero. They still have years to grow, learn and develop their own sporting identity.",
+     "body_hi": "समुदाय इन युवा खिलाड़ियों को ग्राउंड ज़ीरो में फुटबॉल के भविष्य का अहम हिस्सा मानता है। उनके पास सीखने, बढ़ने और अपनी खेल पहचान बनाने के लिए अभी कई साल हैं।",
+     "images": []
+    }
+   ]
+  }
+ ]
+}
