@@ -1,0 +1,107 @@
+{
+ "tab": "volleyball",
+ "pages": [
+  {
+   "slug": "volleyball",
+   "sort_order": 600,
+   "accent": "cyan",
+   "published": true,
+   "title_en": "The off-season becomes a new playing season.",
+   "title_hi": "ऑफ़-सीज़न एक नया खेल का मौसम बन गया।",
+   "subtitle_en": "Volleyball is a growing part of Ground Zero’s multi-sport identity.",
+   "subtitle_hi": "वॉलीबॉल ग्राउंड ज़ीरो की बहु-खेल पहचान का बढ़ता हिस्सा है।",
+   "blocks": [
+    {
+     "kind": "gallery",
+     "heading_en": "",
+     "heading_hi": "",
+     "body_en": "",
+     "body_hi": "",
+     "images": [
+      {
+       "src": "/about/p17_i01.jpg",
+       "cap_en": "Volleyball match",
+       "cap_hi": "वॉलीबॉल मैच"
+      },
+      {
+       "src": "/about/p17_i02.jpg",
+       "cap_en": "Evening play",
+       "cap_hi": "शाम का खेल"
+      },
+      {
+       "src": "/about/p16_i01.jpg",
+       "cap_en": "Player photo",
+       "cap_hi": "खिलाड़ी की तस्वीर"
+      }
+     ]
+    },
+    {
+     "kind": "text",
+     "heading_en": "How volleyball started",
+     "heading_hi": "वॉलीबॉल कैसे शुरू हुआ",
+     "body_en": "Volleyball began around 2023, when cricket activity reduced during the period of wild grass growth, roughly August to November. Players created a playing area a short distance in front of the main ground; after 2024, the volleyball setup was moved into the main ground.\n\nRehan, AD, Sajjid, Golu, Zeeshan and others helped introduce the game. More than 20 players may gather. Matches usually take place in the evening, with as many sets as time allows. Teams are formed randomly, sometimes with three sides rotating so that the losing team steps out.",
+     "body_hi": "वॉलीबॉल लगभग 2023 में शुरू हुआ, जब जंगली घास उगने के दौर में, लगभग अगस्त से नवंबर तक, क्रिकेट की गतिविधि घट गई। खिलाड़ियों ने मुख्य मैदान से थोड़ी दूरी पर सामने एक खेलने की जगह बनाई; 2024 के बाद वॉलीबॉल का सेटअप मुख्य मैदान में ले जाया गया।\n\nरेहान, एडी, साजिद, गोलू, ज़ीशान और अन्य ने इस खेल को शुरू करने में मदद की। 20 से ज़्यादा खिलाड़ी इकट्ठा हो सकते हैं। मैच आमतौर पर शाम को होते हैं, जितने सेट समय में हो सकें। टीमें बेतरतीब ढंग से बनती हैं, कभी-कभी तीन पक्षों के बीच घुमाव के साथ ताकि हारने वाली टीम बाहर बैठे।",
+     "images": []
+    },
+    {
+     "kind": "cards",
+     "heading_en": "Player roles",
+     "heading_hi": "खिलाड़ियों की भूमिकाएँ",
+     "body_en": "Libero | Zeeshan\nSpikers | AD, Sarfaraz\nServer | Don\nSetters | Barun, Raju, Rehan, Golu",
+     "body_hi": "लिबेरो | ज़ीशान\nस्पाइकर | एडी, सरफ़राज़\nसर्वर | डॉन\nसेटर | बरुण, राजू, रेहान, गोलू",
+     "images": []
+    },
+    {
+     "kind": "text",
+     "heading_en": "",
+     "heading_hi": "",
+     "body_en": "Other players: Rabul, Chutu, Rizwan, Manan, Nikhil. Visiting players include Lutku, Ashish, Kaapa, Samser and Durgesh. Players contribute towards a new ball and net each year. No tournament has been held yet; a future KVL (Kasigoda Volleyball League) is an idea, not a confirmed event.",
+     "body_hi": "अन्य खिलाड़ी: राबुल, चुटू, रिज़वान, मनन, निखिल। मेहमान खिलाड़ियों में लुटकू, आशीष, काप्पा, शमशेर और दुर्गेश शामिल हैं। खिलाड़ी हर साल नई गेंद और नेट के लिए योगदान देते हैं। अब तक कोई टूर्नामेंट नहीं हुआ है; भविष्य की केवीएल (कासीगोड़ा वॉलीबॉल लीग) एक विचार है, पक्का आयोजन नहीं।",
+     "images": []
+    }
+   ]
+  },
+  {
+   "slug": "sports-calendar",
+   "sort_order": 610,
+   "accent": "lime",
+   "published": true,
+   "title_en": "Different seasons. One community.",
+   "title_hi": "अलग-अलग मौसम। एक समुदाय।",
+   "subtitle_en": "The ground’s sporting activity shifts with weather, availability and the condition of the playing surface.",
+   "subtitle_hi": "मैदान की खेल गतिविधि मौसम, उपलब्धता और खेल की सतह की हालत के साथ बदलती है।",
+   "blocks": [
+    {
+     "kind": "gallery",
+     "heading_en": "",
+     "heading_hi": "",
+     "body_en": "",
+     "body_hi": "",
+     "images": [
+      {
+       "src": "/about/p01_i02.jpg",
+       "cap_en": "The ground through the seasons",
+       "cap_hi": "मौसमों में मैदान"
+      }
+     ]
+    },
+    {
+     "kind": "timeline",
+     "heading_en": "A typical year at Ground Zero",
+     "heading_hi": "ग्राउंड ज़ीरो का एक आम साल",
+     "body_en": "Dec-Jul | Cricket | KPL begins the cricket calendar; daily local games, Sunday sessions and outside challenges continue into summer.\nMonsoon | Football | The historic rainy-season football window; present activity is centred on youth coaching.\nAug-Nov | Volleyball | Volleyball grows while cricket is less active due to grass and ground conditions.\nWinter | Badminton | A temporary court may be set up for around a month after volleyball; it is removed as KPL approaches.",
+     "body_hi": "दिसंबर-जुलाई | क्रिकेट | केपीएल क्रिकेट कैलेंडर की शुरुआत करता है; रोज़ के स्थानीय खेल, रविवार के सत्र और बाहरी चैलेंज गर्मियों तक चलते हैं।\nबरसात | फुटबॉल | बरसात में फुटबॉल का ऐतिहासिक मौसम; अभी की गतिविधि युवा कोचिंग पर केंद्रित है।\nअगस्त-नवंबर | वॉलीबॉल | घास और मैदान की हालत की वजह से क्रिकेट कम होता है तो वॉलीबॉल बढ़ता है।\nसर्दी | बैडमिंटन | वॉलीबॉल के बाद लगभग एक महीने के लिए एक अस्थायी कोर्ट लग सकता है; केपीएल पास आते ही उसे हटा दिया जाता है।",
+     "images": []
+    },
+    {
+     "kind": "text",
+     "heading_en": "Badminton: a small but welcome seasonal addition",
+     "heading_hi": "बैडमिंटन: छोटा पर स्वागत योग्य मौसमी जुड़ाव",
+     "body_en": "Badminton began around 2023, according to current recollection. A temporary ground is created during winter; it may run for up to about one month before being removed to make way for the KPL cricket season. It is not yet a continuous or tournament-led activity.\n\nFuture growth in badminton is possible, but no regular league or fixed competition has been confirmed. No clearly identified badminton-match photograph is available yet; one will be added when an original image is available.",
+     "body_hi": "मौजूदा याद के अनुसार बैडमिंटन लगभग 2023 में शुरू हुआ। सर्दियों में एक अस्थायी मैदान बनाया जाता है; यह लगभग एक महीने तक चल सकता है, फिर केपीएल क्रिकेट सीज़न के लिए जगह बनाने हेतु हटा दिया जाता है। यह अभी लगातार चलने वाली या टूर्नामेंट आधारित गतिविधि नहीं है।\n\nबैडमिंटन में आगे बढ़ने की संभावना है, लेकिन कोई नियमित लीग या तय प्रतियोगिता पक्की नहीं हुई है। अभी कोई साफ़ पहचानी हुई बैडमिंटन मैच की तस्वीर नहीं है; असली तस्वीर मिलने पर जोड़ी जाएगी।",
+     "images": []
+    }
+   ]
+  }
+ ]
+}
