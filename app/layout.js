@@ -1,17 +1,18 @@
 import './globals.css';
 import Link from 'next/link';
-import { Barlow, Anton, Kaushan_Script } from 'next/font/google';
+import { Barlow, Anton, Kaushan_Script, Noto_Sans_Devanagari } from 'next/font/google';
 import JoinMenu from '@/components/JoinMenu';
 
 const body = Barlow({ subsets: ['latin'], weight: ['400', '600', '700'], variable: '--font-body' });
 const head = Anton({ subsets: ['latin'], weight: '400', variable: '--font-head' });
 const script = Kaushan_Script({ subsets: ['latin'], weight: '400', variable: '--font-script' });
+const deva = Noto_Sans_Devanagari({ subsets: ['devanagari', 'latin'], weight: ['400', '600', '800'], variable: '--font-deva' });
 
 export const metadata = { title: 'Ground Zero Muri', description: 'Where sports bring us together. Matches, players and live auctions at Ground Zero Muri.' };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${body.variable} ${head.variable} ${script.variable}`}>
+    <html lang="en" className={`${body.variable} ${head.variable} ${script.variable} ${deva.variable}`}`}>
       <body>
         <header className="top">
           <div className="wrap">
