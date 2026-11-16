@@ -12,7 +12,7 @@ export const metadata = { title: 'Ground Zero Muri', description: 'Where sports 
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${body.variable} ${head.variable} ${script.variable} ${deva.variable}`}`}>
+       <html lang="en" className={`${body.variable} ${head.variable} ${script.variable} ${deva.variable}`}> 
       <body>
         <header className="top">
           <div className="wrap">
