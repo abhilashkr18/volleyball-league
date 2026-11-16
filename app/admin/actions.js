@@ -716,3 +716,135 @@ export async function setAboutPageVisible(formData) {
   revalidatePath('/about');
   revalidatePath('/admin/about');
 }
+const ROW_KINDS = { stats: 2, timeline: 3, cards: 2, steps: 2, people: 4 };
+const BLOCK_KINDS = ['text', 'stats', 'timeline', 'cards', 'people', 'steps', 'quote', 'gallery', 'note'];
+
+function bodyError(kind, en, hi) {
+  const want = ROW_KINDS[kind];
+  if (!want) return null;
+  const lines = (s) => String(s || '').split('\n').filter((l) => l.trim() !== '');
+  const a = lines(en);
+  const b = lines(hi);
+  for (const [name, arr] of [['English', a], ['Hindi', b]]) {
+    for (let i = 0; i < arr.length; i += 1) {
+      const parts = arr[i].replace(/\s\|\s*$/, ' | ').split(' | ');
+      if (parts.length < want - 1 || (kind !== 'people' && !parts[0].trim())) return `${name}, line ${i + 1}: write ${want} parts separated by " | ".`;
+    }
+  }
+  if (b.length && a.length !== b.length) return 'English and Hindi must have the same number of lines.';
+  return null;
+}
+
+const goEdit = (slug, q, anchor) => redirect(`/admin/about/${slug}?${q}${anchor ? `#${anchor}` : ''}`);
+const errQ = (m) => `err=${encodeURIComponent(m)}`;
+
+export async function updateAboutPage(formData) {
+  const sb = supabaseServer();
+  const id = String(formData.get('id'));
+  const slug = String(formData.get('slug'));
+  const t = (k) => String(formData.get(k) || '').trim();
+  if (!t('title_en')) goEdit(slug, errQ('The English title cannot be empty.'));
+  const accent = ['lime', 'cyan', 'gold', 'orange'].includes(t('accent')) ? t('accent') : 'lime';
+  const { error } = await sb.from('about_pages').update({
+    title_en: t('title_en'), title_hi: t('title_hi'), subtitle_en: t('subtitle_en'), subtitle_hi: t('subtitle_hi'),
+    accent, sort_order: Number(t('sort_order')) || 0, updated_at: new Date().toISOString(),
+  }).eq('id', id);
+  if (error) goEdit(slug, errQ('Could not save. Please try again.'));
+  revalidatePath('/about');
+  goEdit(slug, 'saved=1');
+}
+
+export async function saveAboutBlock(formData) {
+  const sb = supabaseServer();
+  const id = String(formData.get('id'));
+  const slug = String(formData.get('slug'));
+  const anchor = `b-${id}`;
+  const { data: cur } = await sb.from('about_blocks').select('kind').eq('id', id).maybeSingle();
+  if (!cur) goEdit(slug, errQ('Block not found.'));
+  const line = (k) => String(formData.get(k) || '').trim();
+  const body = (k) => String(formData.get(k) || '').replace(/\r\n/g, '\n').replace(/\n+$/, '');
+  const body_en = body('body_en');
+  const body_hi = body('body_hi');
+  const msg = bodyError(cur.kind, body_en, body_hi);
+  if (msg) goEdit(slug, errQ(msg), anchor);
+  const n = Number(formData.get('img_n') || 0);
+  const images = [];
+  for (let i = 0; i < n; i += 1) {
+    if (formData.get(`del_${i}`) === 'on') continue;
+    const src = line(`src_${i}`);
+    if (!src) continue;
+    if (!(src.startsWith('/') || src.startsWith('https://'))) goEdit(slug, errQ(`Photo ${i + 1}: the address must start with / or https://`), anchor);
+    images.push({ src, cap_en: line(`cap_en_${i}`), cap_hi: line(`cap_hi_${i}`) });
+  }
+  const { error } = await sb.from('about_blocks').update({ heading_en: line('heading_en'), heading_hi: line('heading_hi'), body_en, body_hi, images }).eq('id', id);
+  if (error) goEdit(slug, errQ('Could not save. Please try again.'), anchor);
+  revalidatePath('/about');
+  goEdit(slug, 'saved=1', anchor);
+}
+
+export async function addBlockImage(formData) {
+  const sb = supabaseServer();
+  const id = String(formData.get('id'));
+  const slug = String(formData.get('slug'));
+  const anchor = `b-${id}`;
+  const { data: cur } = await sb.from('about_blocks').select('images').eq('id', id).maybeSingle();
+  if (!cur) goEdit(slug, errQ('Block not found.'));
+  const file = formData.get('photo');
+  const path = String(formData.get('path') || '').trim();
+  let src = '';
+  if (file && file.size > 0) {
+    if (file.size > 3.5 * 1024 * 1024) goEdit(slug, errQ('Photo must be 3.5 MB or smaller.'), anchor);
+    const ext = (file.name.split('.').pop() || 'jpg').toLowerCase();
+    const key = `about/${Date.now()}.${ext}`;
+    const up = await sb.storage.from('media').upload(key, file, { contentType: file.type });
+    if (up.error) goEdit(slug, errQ('Photo upload failed. Try a smaller photo.'), anchor);
+    src = sb.storage.from('media').getPublicUrl(key).data.publicUrl;
+  } else if (path.startsWith('/') || path.startsWith('https://')) {
+    src = path;
+  } else {
+    goEdit(slug, errQ('Choose a photo, or type a photo address that starts with / or https://'), anchor);
+  }
+  const images = [...(cur.images || []), { src, cap_en: String(formData.get('cap_en') || '').trim(), cap_hi: String(formData.get('cap_hi') || '').trim() }];
+  const { error } = await sb.from('about_blocks').update({ images }).eq('id', id);
+  if (error) goEdit(slug, errQ('Could not save the photo. Please try again.'), anchor);
+  revalidatePath('/about');
+  goEdit(slug, 'saved=1', anchor);
+}
+
+export async function addAboutBlock(formData) {
+  const sb = supabaseServer();
+  const pageId = String(formData.get('page_id'));
+  const slug = String(formData.get('slug'));
+  const kind = String(formData.get('kind'));
+  if (!BLOCK_KINDS.includes(kind)) goEdit(slug, errQ('Choose what to add.'));
+  const { data: last } = await sb.from('about_blocks').select('sort_order').eq('page_id', pageId).order('sort_order', { ascending: false }).limit(1);
+  const next = last && last[0] ? last[0].sort_order + 1 : 0;
+  const { data: row, error } = await sb.from('about_blocks').insert({ page_id: pageId, sort_order: next, kind }).select('id').single();
+  if (error || !row) goEdit(slug, errQ('Could not add. Please try again.'));
+  revalidatePath('/about');
+  goEdit(slug, 'saved=1', `b-${row.id}`);
+}
+
+export async function deleteAboutBlock(formData) {
+  const sb = supabaseServer();
+  await sb.from('about_blocks').delete().eq('id', String(formData.get('id')));
+  revalidatePath('/about');
+  goEdit(String(formData.get('slug')), 'saved=1');
+}
+
+export async function moveAboutBlock(formData) {
+  const sb = supabaseServer();
+  const id = String(formData.get('id'));
+  const slug = String(formData.get('slug'));
+  const { data: cur } = await sb.from('about_blocks').select('page_id').eq('id', id).maybeSingle();
+  if (!cur) goEdit(slug, errQ('Block not found.'));
+  const { data: all } = await sb.from('about_blocks').select('id').eq('page_id', cur.page_id).order('sort_order');
+  const ids = (all || []).map((b) => b.id);
+  const i = ids.indexOf(id);
+  const j = formData.get('dir') === 'up' ? i - 1 : i + 1;
+  if (i < 0 || j < 0 || j >= ids.length) goEdit(slug, 'saved=1', `b-${id}`);
+  [ids[i], ids[j]] = [ids[j], ids[i]];
+  for (let k = 0; k < ids.length; k += 1) await sb.from('about_blocks').update({ sort_order: k }).eq('id', ids[k]);
+  revalidatePath('/about');
+  goEdit(slug, 'saved=1', `b-${id}`);
+}
