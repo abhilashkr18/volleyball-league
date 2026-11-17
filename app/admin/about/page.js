@@ -35,6 +35,7 @@ export default async function AdminAbout({ searchParams }) {
                 <input type="hidden" name="id" value={p.id} />
                 <input type="hidden" name="show" value={String(!p.published)} />
                 <span style={{ flex: 1 }}><b>{p.title_en}</b><br /><span className="muted">{p.slug} · {p.published ? 'Visible to everyone' : 'Hidden (only you can see it)'}</span></span>
+                                <Link className="btn" href={`/admin/about/${p.slug}`} style={{ padding: '.35rem .9rem' }}>Edit</Link>
                 <button className="btn-line" style={{ padding: '.35rem .9rem' }}>{p.published ? 'Hide' : 'Show'}</button>
               </form>
             ))}
